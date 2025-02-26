@@ -54,7 +54,7 @@ comments:
     category_id          : "DIC_kwDON_U2w84CnUeb" # Shown during giscus setup at https://giscus.app
     discussion_term      : "pathname" # "pathname" (default), "url", "title", "og:title"
     reactions_enabled    : "0" # '1' for enabled (default), '0' for disabled
-    theme                : "cobalt" # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
+    theme                : "https://yongdevv.github.io/assets/css/main.css" # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
     strict               : "0" # 1 for enabled, 0 for disabled (default)
     input_position       : "bottom" # "top", "bottom" # The comment input box will be placed above or below the comments
     emit_metadata        : "0" # 1 for enabled, 0 for disabled (default) # https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#imetadatamessage
