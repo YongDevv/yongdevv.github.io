@@ -86,11 +86,11 @@
         color: $link-color-hover;
       }
 
-      &.current,
-      &.current.disabled {
-        color: #fff;
-        background: $primary-color;
-      }
+      // &.current,
+      // &.current.disabled {
+      //   color: #fff;
+      //   background: $primary-color;
+      // }
 
       &.disabled {
         color: rgba($muted-text-color, 0.5);

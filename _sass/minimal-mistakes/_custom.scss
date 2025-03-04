@@ -1,0 +1,79 @@
+@mixin flex($value1, $value2, $value3, $value4) {
+  display: flex;
+  flex-direction: $value1;
+  flex-wrap: $value2;
+  justify-content: $value3;
+  align-items: $value4;
+}
+.archive {
+  .archive__item {
+    a {
+      color: #ddd;
+      text-decoration: unset;
+      font-size: 24px;
+      &:hover { color: mix(#000, $mainColor, 25%) }
+    }
+    .page__meta {
+      color: $grayText1;
+      font-size: 14px;
+    }
+    .archive__item-excerpt {
+      color: $grayText2;
+      font-size: 16px;
+    }
+  }
+}
+
+.navicon {
+  background: $pure;
+  &:before, &:after { background: $pure; }
+}
+
+.pagination {
+  li {
+    >a {
+      &.current {
+        color: $pure; 
+        background: $mainColor;
+      }
+    }
+  }
+}
+
+article.page {
+  margin-top: 40px;
+  padding: 40px;
+  border-radius: 20px;
+  background: $postBg;
+  .page__inner-wrap {
+      margin-top: unset;
+  }
+  .breadcrumbs {
+    padding: unset;
+    max-width: unset;
+    >ol { 
+      @include flex(row, wrap, center, center);
+      gap: 6px;
+      margin-top: unset;
+      width: 100%;
+      text-align: center;
+      >li { 
+        line-height: 20px;
+        &.current {
+          font-weight: 500;
+          letter-spacing: 0.03em;
+          color: mix(#000, $pure, 50%);
+        }
+      }
+    }
+    i { 
+      font-size: 14px;
+      line-height: 20px;
+      &.home { color: $mainColor; }
+      &.breadArrow { color: $lineColor3;}
+    }
+    span[itemprop="name"] { display: none; }
+    .sep { display: none; }
+  }
+  .page__title { text-align: center; }
+}

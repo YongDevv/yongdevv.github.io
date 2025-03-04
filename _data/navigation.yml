@@ -1,29 +1,29 @@
 # main links
-# main:
-#   - title: "Quick-Start Guide"
-#     url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+main:
+  - title: "Quick-Start Guide"
+    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+  - title: "About"
+    url: https://mmistakes.github.io/minimal-mistakes/about/
+  - title: "Sample Posts"
+    url: /year-archive/
+  - title: "Sample Collections"
+    url: /collection-archive/
+  - title: "Sitemap"
+    url: /sitemap/
 docs:
   - title: "Database"
     children:
       - title: "Oracle"
-        url: oracle/
+        url: /oracle/
         category: "oracle"
       - title: "MS-SQL"
-        url: mssql/
+        url: /mssql/
         category: "mssql"
       - title: "MariaDB"
-        url: mariadb/
+        url: /mariadb/
         category: "mariadb"
   - title: "Server"
     children:
       - title: "Ubuntu"
-        url: ubuntu/
+        url: /ubuntu/
         category: "ubuntu"
