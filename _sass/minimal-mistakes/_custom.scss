@@ -72,7 +72,9 @@ article.page {
       &.home { color: $mainColor; }
       &.breadArrow { color: $lineColor3;}
     }
-    span[itemprop="name"] { display: none; }
+    .home {
+      span[itemprop="name"] { display: none; }
+    }
     .sep { display: none; }
   }
   .page__title { text-align: center; }

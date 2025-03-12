@@ -1,29 +1,48 @@
 # main links
-main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  - title: "About"
-    url: https://mmistakes.github.io/minimal-mistakes/about/
-  - title: "Sample Posts"
-    url: /year-archive/
-  - title: "Sample Collections"
-    url: /collection-archive/
-  - title: "Sitemap"
-    url: /sitemap/
+# main:
+#   - title: "Quick-Start Guide"
+#     url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+#   - title: "About"
+#     url: https://mmistakes.github.io/minimal-mistakes/about/
+#   - title: "Sample Posts"
+#     url: /year-archive/
+#   - title: "Sample Collections"
+#     url: /collection-archive/
+#   - title: "Sitemap"
+#     url: /sitemap/
 docs:
-  - title: "Database"
+  - title: "Frontend"
     children:
-      - title: "Oracle"
-        url: /oracle/
-        category: "oracle"
-      - title: "MS-SQL"
-        url: /mssql/
-        category: "mssql"
-      - title: "MariaDB"
-        url: /mariadb/
-        category: "mariadb"
-  - title: "Server"
+      - title: "JavaScript"
+        url: /javascript/
+        category: "javascript"
+      - title: "TypeScript"
+        url: /typescript/
+        category: "typescript"
+      - title: "React"
+        url: /react/
+        category: "react"
+      - title: "Vue"
+        url: /vue/
+        category: "vue"
+  - title: "Publish"
     children:
-      - title: "Ubuntu"
-        url: /ubuntu/
-        category: "ubuntu"
+      - title: "HTML"
+        url: /html/
+        category: "html"
+      - title: "CSS"
+        url: /css/
+        category: "css"
+      - title: "Web"
+        url: /web/
+        category: "web"
+        children:
+          - title: "웹 접근성"
+            url: /accessibility/
+            category: "accessibility"
+          - title: "웹 호환성 "
+            url: /crossbrowsing /
+            category: "crossbrowsing"
+          - title: "웹 표준 "
+            url: /standards /
+            category: "standards"
