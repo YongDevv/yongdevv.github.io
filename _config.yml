@@ -32,7 +32,7 @@ masthead_title           : # overrides the website title displayed in the masthe
 breadcrumbs              : #true
 words_per_minute         : 200
 enable_copy_code_button  : # true, false (default)
-copyright                : "Made by SYNCODE" # "copyright" name, defaults to site.title
+copyright                : #"Made by SYNCODE" # "copyright" name, defaults to site.title
 copyright_url            : # "copyright" URL, defaults to site.url
 comments:
   provider               : "giscus" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
@@ -114,13 +114,13 @@ analytics:
 
 # Site Author
 author:
-  name             : "YongDev"
+  name             : #"YongDev"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "GitHub 블로그입니다."
-  location         : "InCheon"
+  bio              : #"GitHub 블로그입니다."
+  location         : #"InCheon"
   email            :
   links:
-    - label: "kah3721@naver.com"
+    - label: ""
       icon: "fas fa-fw fa-envelope-square"
       url: "kah3721@naver.com"
     - label: "Website"
@@ -132,10 +132,10 @@ author:
     # - label: "Facebook"
     #   icon: "fab fa-fw fa-facebook-square"
     #   # url: "https://facebook.com/"
-    - label: "GitHub"
+    - label: ""
       icon: "fab fa-fw fa-github"
       url: "https://github.com/YongDevv"
-    - label: "Instagram"
+    - label: ""
       icon: "fab fa-fw fa-instagram"
       url: "https://www.instagram.com/kah3721/"
 
