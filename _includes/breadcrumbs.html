@@ -11,7 +11,6 @@
 {% else %}
   {% assign crumb_path = site.category_archive.path %}
 {% endif %}
-
 <nav class="breadcrumbs">
   <ol itemscope itemtype="https://schema.org/BreadcrumbList">
     {% assign crumbs = page.url | split: '/' %}
@@ -23,18 +22,22 @@
 
           <meta itemprop="position" content="{{ i }}" />
         </li>
-        <i class="fa-solid fa-chevron-right breadArrow"><span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span></i>
+        <!-- <i class="fa-solid fa-chevron-right breadArrow"><span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span></i> -->
       {% endif %}
-      {% if forloop.last %}
+      <!-- {% if forloop.last %}
         <li class="current"{% if page.locale %} lang="{{ page.locale }}"{% endif %}>{{ page.title }}</li>
-      {% else %}
+      {% else %} -->
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name">{{ page.category }}</span>
+      </li>
         {% assign i = i | plus: 1 %}
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="{{ crumb | downcase | replace: '%20', '-' | prepend: path_type | prepend: crumb_path | relative_url }}" itemprop="item"><span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span></a>
+          <a href="{{ crumb | downcase | relative_url }}" class="current" itemprop="item"><span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span></a>
+          <!-- <a href="{{ crumb | downcase | replace: '%20', '-' | prepend: path_type | prepend: crumb_path | relative_url }}" itemprop="item"><span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span></a> -->
           <meta itemprop="position" content="{{ i }}" />
         </li>
-        <i class="fa-solid fa-chevron-right breadArrow"><span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span></i>
-      {% endif %}
+        <!-- <i class="fa-solid fa-chevron-right breadArrow"><span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span></i> -->
+      <!-- {% endif %} -->
     {% endfor %}
   </ol>
 </nav>

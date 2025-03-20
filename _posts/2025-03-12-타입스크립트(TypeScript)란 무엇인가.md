@@ -1,5 +1,6 @@
 ---
 title: "타입스크립트(TypeScript)란 무엇인가?"
+category: Frontend
 categories: typescript
 permalink: typescript/post_1
 layout: single

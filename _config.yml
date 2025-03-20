@@ -120,9 +120,9 @@ author:
   location         : #"InCheon"
   email            :
   links:
-    - label: ""
-      icon: "fas fa-fw fa-envelope-square"
-      url: "kah3721@naver.com"
+    - label: "mail"
+      icon: "fa-regular fa-envelope"
+      url: "mailto:kah3721@naver.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
@@ -133,10 +133,10 @@ author:
     #   icon: "fab fa-fw fa-facebook-square"
     #   # url: "https://facebook.com/"
     - label: ""
-      icon: "fab fa-fw fa-github"
+      icon: "fa-brands fa-github"
       url: "https://github.com/YongDevv"
     - label: ""
-      icon: "fab fa-fw fa-instagram"
+      icon: "fa-brands fa-instagram"
       url: "https://www.instagram.com/kah3721/"
 
 # Site Footer

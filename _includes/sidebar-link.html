@@ -27,7 +27,7 @@
       <li>
         <a href="mailto:{{ author.email }}" rel="me" class="u-email">
           <meta itemprop="email" content="{{ author.email }}" />
-          <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</span>
+          <i class="fa-regular fa-envelope" aria-hidden="true"></i><span class="label">{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</span>
         </a>
       </li>
     {% endif %}
@@ -75,7 +75,7 @@
     {% if author.instagram %}
       <li>
         <a href="https://instagram.com/{{ author.instagram }}" itemprop="sameAs" rel="nofollow noopener noreferrer me">
-          <i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span>
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span>
         </a>
       </li>
     {% endif %}

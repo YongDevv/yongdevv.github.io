@@ -34,10 +34,10 @@ body {
 }
 
 .page {
-  @include breakpoint($large) {
-    float: inline-end;
-    width: calc(100% - #{$sidebar-width});
-  }
+  // @include breakpoint($large) {
+  //   float: inline-end;
+  //   width: calc(100% - #{$sidebar-width});
+  // }
 
   .page__inner-wrap {
     float: inline-start;

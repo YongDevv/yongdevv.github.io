@@ -5,6 +5,8 @@ permalink: /vue
 author_profile: true
 sidebar_main: true
 types: posts
+sidebar:
+  nav: "docs"
 ---
 
 {% assign posts = site.categories.vue %}

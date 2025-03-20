@@ -5,6 +5,8 @@ permalink: /typescript
 author_profile: true
 sidebar_main: true
 types: posts
+sidebar:
+  nav: "docs"
 ---
 
 {% assign posts = site.categories.typescript %}
