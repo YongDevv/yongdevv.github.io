@@ -6,44 +6,44 @@
    Breadcrumb navigation links
    ========================================================================== */
 
-.breadcrumbs {
-  @include clearfix;
-  margin: 0 auto;
-  max-width: 100%;
-  padding-inline: 1em;
-  font-family: $sans-serif;
-  -webkit-animation: $intro-transition;
-  animation: $intro-transition;
-  -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
+// .breadcrumbs {
+//   @include clearfix;
+//   margin: 0 auto;
+//   max-width: 100%;
+//   padding-inline: 1em;
+//   font-family: $sans-serif;
+//   -webkit-animation: $intro-transition;
+//   animation: $intro-transition;
+//   -webkit-animation-delay: 0.3s;
+//   animation-delay: 0.3s;
 
-  @include breakpoint($x-large) {
-    max-width: $x-large;
-  }
+//   @include breakpoint($x-large) {
+//     max-width: $x-large;
+//   }
 
-  ol {
-    padding: 0;
-    list-style: none;
-    font-size: $type-size-6;
+//   ol {
+//     padding: 0;
+//     list-style: none;
+//     font-size: $type-size-6;
 
-    @include breakpoint($large) {
-      float: inline-end;
-      width: calc(100% - #{$right-sidebar-width-narrow});
-    }
+//     @include breakpoint($large) {
+//       float: inline-end;
+//       width: calc(100% - #{$right-sidebar-width-narrow});
+//     }
 
-    @include breakpoint($x-large) {
-      width: calc(100% - #{$right-sidebar-width});
-    }
-  }
+//     @include breakpoint($x-large) {
+//       width: calc(100% - #{$right-sidebar-width});
+//     }
+//   }
 
-  li {
-    display: inline;
-  }
+//   li {
+//     display: inline;
+//   }
 
-  .current {
-    font-weight: bold;
-  }
-}
+//   .current {
+//     font-weight: bold;
+//   }
+// }
 
 /*
      Post pagination navigation links
@@ -154,14 +154,14 @@
   }
 }
 
-.page__content + .pagination,
-.page__meta + .pagination,
-.page__share + .pagination,
-.page__comments + .pagination {
-  margin-top: 2em;
-  padding-top: 2em;
-  border-top: 1px solid $border-color;
-}
+// .page__content + .pagination,
+// .page__meta + .pagination,
+// .page__share + .pagination,
+// .page__comments + .pagination {
+//   margin-top: 2em;
+//   padding-top: 2em;
+//   border-top: 1px solid $border-color;
+// }
 
 /*
      Priority plus navigation

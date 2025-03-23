@@ -21,16 +21,16 @@ layout: default
 <div id="main" role="main">
   {% include sidebar.html %}
   <div id="container">
-    <div class="containerTop">
-      <h1 class="categoryTitle">{{ page.category }}</h1>
-    </div>
+    <header class="containerTop">
+      <strong class="categoryTitle">{{ page.category }}</strong>
+    </header>
     <article class="page" itemscope itemtype="https://schema.org/CreativeWork"{% if page.locale %} lang="{{ page.locale }}"{% endif %}>
       {% if page.title %}<meta itemprop="headline" content="{{ page.title | replace: '|', '&#124;' | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
       {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
       {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">{% endif %}
       {% if page.last_modified_at %}<meta itemprop="dateModified" content="{{ page.last_modified_at | date_to_xmlschema }}">{% endif %}
   
-      <div class="page__inner-wrap">
+      <section class="page__inner-wrap">
         {% unless page.header.overlay_color or page.header.overlay_image %}
           <header>
             {% include breadcrumbs.html %} <!-- breadCrumb 가져오기 -->
@@ -67,8 +67,8 @@ layout: default
   
         {% if page.share %}{% include social-share.html %}{% endif %}
   
-        {% include post_pagination.html %}
-      </div>
+        <!-- {% include post_pagination.html %} -->
+      </section>
   
       {% if site.comments.provider and page.comments %}
         {% if jekyll.environment == 'production' %}
@@ -81,13 +81,14 @@ layout: default
         {% endif %}
       {% endif %}
     </article>
+    <aside class="aside">
+      {% comment %}<!-- only show related on a post page when `related: true` -->{% endcomment %}
+      {% if page.id and page.related and site.related_posts.size > 0 %}
+        {% include page__related.html posts=site.related_posts %}
+      {% comment %}<!-- otherwise show recent posts if no related when `related: true` -->{% endcomment %}
+      {% elsif page.id and page.related %}
+        {% include page__related.html posts=site.posts %}
+      {% endif %}
+    </aside>
   </div>
-
-  {% comment %}<!-- only show related on a post page when `related: true` -->{% endcomment %}
-  {% if page.id and page.related and site.related_posts.size > 0 %}
-    {% include page__related.html posts=site.related_posts %}
-  {% comment %}<!-- otherwise show recent posts if no related when `related: true` -->{% endcomment %}
-  {% elsif page.id and page.related %}
-    {% include page__related.html posts=site.posts %}
-  {% endif %}
 </div>
