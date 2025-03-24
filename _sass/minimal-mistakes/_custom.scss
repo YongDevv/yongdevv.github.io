@@ -16,12 +16,12 @@
   }
 }
 
-@mixin transition($value1, $value2, $value3) {
-  transition: $value1 $value2 $value3;
-  -webkit-transition: $value1 $value2 $value3;
-  -moz-transition: $value1 $value2 $value3;
-  -o-transition: $value1 $value2 $value3;
-  -ms-transition: $value1 $value2 $value3;
+@mixin transition($value1, $value2, $value3, $value4:null) {
+  transition: $value1 $value2 $value3 $value4;
+  -webkit-transition: $value1 $value2 $value3 $value4;
+  -moz-transition: $value1 $value2 $value3 $value4;
+  -o-transition: $value1 $value2 $value3 $value4;
+  -ms-transition: $value1 $value2 $value3 $value4;
 }
 
 $wide: 1200px;
@@ -94,6 +94,7 @@ $lineColor2: #313540;
 $lineColor3: #585b63;
 $postBg: #1f2125;
 $pure: #fff;
+$fontColor80 : rgba($pure, 0.8);
 $fontColor50 : rgba($pure, 0.5);
 $fontColor20 : rgba($pure, 0.2);
 
@@ -310,7 +311,7 @@ article.page {
   .page__inner-wrap {
     margin: 0 auto;
     width: 100%;
-    max-width: $middle;
+    max-width: 900px;
     >header {
       padding-bottom: 30px;
       margin-bottom: 30px;
@@ -377,16 +378,17 @@ article.page {
     }
     .page__content {
       color: #929498;
+      .section {
+        & + .section { margin-top: 40px; }
+      }
       h3, h4, h5, h6 {
+        color: $fontColor80;
         .header-link {
           position: relative;
           inset-inline-start: 0.5em;
           opacity: 0;
           font-size: 0.8em;
-          -webkit-transition: opacity 0.2s ease-in-out 0.1s;
-          -moz-transition: opacity 0.2s ease-in-out 0.1s;
-          -o-transition: opacity 0.2s ease-in-out 0.1s;
-          transition: opacity 0.2s ease-in-out 0.1s;
+          @include transition(opacity, 0.2s, ease-in-out, 0.1s);
         }
         &:hover .header-link {
           opacity: 1;
@@ -397,7 +399,21 @@ article.page {
         margin-bottom: 20px;
       }
       h4 { font-size: 20px; }
-      p { font-size: 16px;}
+      h5 { font-size: 18px; }
+      p { 
+        line-height: 1.6;
+        font-size: 16px;
+      }
+      ol {
+        li {
+          &::marker {
+            color: $fontColor80;
+          }
+          &:has(> h3)::marker { font-size: 24px; }
+          &:has(> h4)::marker { font-size: 20px; }
+          &:has(> h5)::marker { font-size: 18px; }
+        }
+      }
     }
   }
 }
