@@ -5,3 +5,4 @@ gem "minimal-mistakes-jekyll"
 gem 'kramdown-parser-gfm'
 gem 'tzinfo'
 gem 'tzinfo-data'
+gem 'jekyll-spaceship'
