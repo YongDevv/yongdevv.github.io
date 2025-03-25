@@ -8,6 +8,10 @@ sidebar:
   nav: "docs"
 ---
 
+<figure class="imageWrap">
+  <img src="https://i.imgur.com/MkTcD86.png" alt="포스팅 썸네일">
+</figure>
+
 <section class="section" markdown="1">
 
 ### 들어가기에 앞서..
@@ -32,13 +36,17 @@ sidebar:
 
 타입스크립트는 자바스크립트와 완전 다른 언어가 아니라 기존의 자바스크립트를 더 안전하게 사용할 수 있도록 타입과 관련된 여러가지 강력한 기능들을 추가한 언어로 개발자가 보다 안전하고 효율적으로 코드를 작성할 수 있게 자바스크립트의 한계를 보완해주고 확장시켜주는 자바스크립트의 상위 집합이다.
 
-![타입스크립트와 자바스크립트의 관계 이미지](https://i.imgur.com/crjyFWJ.png)
-*이미지 출처: 한 입 크기로 잘라먹는 타입스크립트*
+<figure class="imageWrap">
+  <img src="https://i.imgur.com/crjyFWJ.png" alt="타입스크립트와 자바스크립트의 관계 이미지">
+  <figcaption class="imageCaption">출처: 한 입 크기로 잘라먹는 타입스크립트</figcaption>
+</figure>
 
 아래 사진을 보면 동일한 기능의 자바스크립트와 타입스크립트 코드가 있다. 한 눈에 봐도 비슷하지만 두 코드의 가장 큰 차이점은 변수를 선언할 때 나온다.
 
-![타입스크립트와 자바스크립트의 코드 차이 이미지](https://i.imgur.com/W7r2WAK.png)
-*이미지 출처: 한 입 크기로 잘라먹는 타입스크립트*
+<figure class="imageWrap">
+  <img src="https://i.imgur.com/W7r2WAK.png" alt="타입스크립트와 자바스크립트의 코드 차이 이미지">
+  <figcaption class="imageCaption">출처: 한 입 크기로 잘라먹는 타입스크립트</figcaption>
+</figure>
 
 자바스크립트는 변수를 선언할 때, 변수의 타입을 지정하지 않는데 이는 자바스크립트에는 개발자가 직접 정의할 수 있는 방법이 없기 때문이다.
 <br><br>
@@ -56,8 +64,10 @@ sidebar:
 <br><br>
   때문에 자바스크립트는 다른 언어들처럼 엄격한 문법이나 제약을 갖출 필요가 없었고, 버그로 인한 안전성 등을 포기하는 대신 아주 유연하게 설계되어 개발자들이 쉽고 빠르게 코드를 만들 수 있었다. 어차피 웹에서만 동작하고 간단한 작동만 하는 프로그램을 만들거니까 큰 상관이 없었다.
 
-![Node.js의 기능 설명 이미지](https://i.imgur.com/V53GbJo.png)
-*이미지 출처: 한 입 크기로 잘라먹는 타입스크립트*
+<figure class="imageWrap">
+  <img src="https://i.imgur.com/V53GbJo.png" alt="Node.js의 기능 설명 이미지">
+  <figcaption class="imageCaption">출처: 한 입 크기로 잘라먹는 타입스크립트</figcaption>
+</figure>
 
   그런데 자바스크립트의 입지는 Node.js가 등장하면서 완전히 달라지게 된다. Node.js라는 자바스크립트 구동기가 탄생하면서 자바스크립트는 웹 브라우저뿐만이 아니라 어디서든 실행할 수 있게 되었고, 이 말인 즉슨 웹 서버는 물론이고 인스타그램이나 카카오톡 같은 모바일 앱, 데스크탑 앱 등 모든 프로그램을 자바스크립트로 만들 수 있게 된 것이다.
 <br><br>
@@ -95,7 +105,9 @@ sidebar:
    <br><br>
    또한, 타입스크립트는 기존 자바스크립트 프로젝트에 점차적으로 타입스크립트를 적용할 수 있어 기존 코드에 영향을 최소화하면서도 타입스크립트의 장점을 점진적으로 활용할 수 있다.
 
-![타입 시스템 정리 이미지](https://i.imgur.com/n1b3iOk.png)
-*이미지 출처: 한 입 크기로 잘라먹는 타입스크립트*
+<figure class="imageWrap">
+  <img src="https://i.imgur.com/n1b3iOk.png" alt="타입 시스템 정리 이미지">
+  <figcaption class="imageCaption">출처: 한 입 크기로 잘라먹는 타입스크립트</figcaption>
+</figure>
 
 </section>
