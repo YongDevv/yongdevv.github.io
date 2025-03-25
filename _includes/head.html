@@ -72,7 +72,36 @@
   .select-option:hover {
       background: #f0f0f0;
   }
-  .goog-te-gadget-simple { background: red; }
+  #google_translate_element {
+    display: none;
+  }
+  /* 구글 번역 툴바 숨기기 */
+.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* 페이지 위치 조정 (툴바가 페이지를 아래로 밀어내는 것 방지) */
+body {
+  top: 0px !important;
+}
+
+/* 원본 텍스트 툴팁 숨기기 */
+.goog-gt-tt {
+  display: none !important;
+}
+
+/* 상단 구글바 숨기기 */
+.skiptranslate {
+  display: none;;
+}
+
+/* 툴팁 관련 요소 숨기기 */
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
 </style>
 
 <script>
@@ -81,7 +110,6 @@
     new google.translate.TranslateElement({
       pageLanguage: 'ko',
       includedLanguages: 'ko,en,ja,zh-CN',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
       autoDisplay: false
     }, 'google_translate_element');
     console.log('Google Translate 초기화 완료');
@@ -90,8 +118,9 @@
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <div id="google_translate_element"></div>
+
 <!-- 커스텀 셀렉트 -->
-<div class="custom-select-container" id="custom-translate">
+<div class="custom-select-container" id="custom-translate" translate="no">
   <button class="select-button">언어 선택</button>
   <div class="select-options">
       <div class="select-option" data-lang="ko">한국어</div>
