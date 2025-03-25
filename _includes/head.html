@@ -30,3 +30,75 @@
     <script src="{{ script | relative_url }}"></script>
   {% endfor %}
 {% endif %}
+<style>
+  /* 커스텀 셀렉트 스타일 */
+  .custom-select-container {
+      position: relative;
+      display: inline-block;
+      min-width: 150px;
+  }
+  
+  .select-button {
+      padding: 8px 15px;
+      background: #f8f9fa;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+  }
+  
+  .select-options {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #ddd;
+      border-top: none;
+      z-index: 100;
+      display: none;
+      color: #000;
+  }
+  
+  .select-options.show {
+      display: block;
+  }
+  
+  .select-option {
+      padding: 8px 15px;
+      cursor: pointer;
+  }
+  
+  .select-option:hover {
+      background: #f0f0f0;
+  }
+  .goog-te-gadget-simple { background: red; }
+</style>
+
+<script>
+  function googleTranslateElementInit() {
+    console.log('Google Translate 초기화 중...');
+    new google.translate.TranslateElement({
+      pageLanguage: 'ko',
+      includedLanguages: 'ko,en,ja,zh-CN',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element');
+    console.log('Google Translate 초기화 완료');
+  }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<div id="google_translate_element"></div>
+<!-- 커스텀 셀렉트 -->
+<div class="custom-select-container" id="custom-translate">
+  <button class="select-button">언어 선택</button>
+  <div class="select-options">
+      <div class="select-option" data-lang="ko">한국어</div>
+      <div class="select-option" data-lang="en">English</div>
+      <div class="select-option" data-lang="ja">日本語</div>
+      <div class="select-option" data-lang="zh-CN">中文 (简体)</div>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/custom.js' | relative_url }}"></script>
