@@ -20,10 +20,42 @@ layout: default
 
 <div id="main" role="main">
   {% include sidebar.html %}
-  <div id="container">
-    <header class="containerTop">
+  <div id="container" itemscope itemtype="https://schema.org/WebPage">
+    <header class="containerTop" itemscope itemtype="https://schema.org/WPHeader">
       <strong class="categoryTitle">{{ page.category }}</strong>
+      <div class="headerActions" role="toolbar" aria-label="헤더 도구">
+        <!-- 검색 기능 -->
+        {% if site.search == true %}
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">{{ site.data.ui-text[site.locale].search_label | default: "검색 버튼" }}</span>
+          <i class="fas fa-search"></i>
+        </button>
+        {% endif %}
+        <!-- //검색 기능 -->
+
+        <!-- 번역 기능 -->
+        <div id="google_translate_element"></div>
+        <div class="transTool" translate="no">
+          <button class="transBtn"><span class="hidden">언어 선택</span></button>
+          <div class="overlay"></div>
+          <div class="transMenu">
+            <strong>번역할 언어를 고르세요.</strong>
+            <ul class="transList">
+              <li class="transItem selected" data-lang="ko">한국어</li>
+              <li class="transItem" data-lang="en">English</li>
+              <li class="transItem" data-lang="ja">日本語</li>
+              <li class="transItem" data-lang="zh-CN">中文 (简体)</li>
+              <li class="transItem" data-lang="de">Deutsch</li>
+              <li class="transItem" data-lang="fr">Français</li>
+              <li class="transItem" data-lang="pt">Português</li>
+              <li class="transItem" data-lang="vi">Tiếng Việt</li>
+            </ul>
+          </div>
+        </div>
+        <!-- //번역 기능 -->
+      </div>
     </header>
+  
     <article class="page" itemscope itemtype="https://schema.org/CreativeWork"{% if page.locale %} lang="{{ page.locale }}"{% endif %}>
       {% if page.title %}<meta itemprop="headline" content="{{ page.title | replace: '|', '&#124;' | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
       {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}

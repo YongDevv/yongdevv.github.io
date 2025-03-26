@@ -11,7 +11,9 @@
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}" dir="{% if site.rtl %}rtl{% else %}ltr{% endif %}">
     {% include_cached skip-links.html %}
-    <!-- {% include_cached masthead.html %} -->
+    {% comment %}
+    {% include_cached masthead.html %}
+    {% endcomment %}
 
     <div class="initial-content">
       {{ content }}
@@ -24,12 +26,27 @@
       </div>
     {% endif %}
 
-    <!-- <div id="footer" class="page__footer">
+    {% comment %}
+    <div id="footer" class="page__footer">
       <footer>
         {% include_cached footer.html %}
       </footer>
-    </div> -->
+    </div>
+    {% endcomment %}
 
     {% include scripts.html %}
   </body>
 </html>
+<script>
+  function googleTranslateElementInit() {
+    console.log('Google Translate 초기화 중...');
+    new google.translate.TranslateElement({
+      pageLanguage: 'ko',
+      includedLanguages: 'ko,en,ja,zh-CN,de,fr,pt,vi',
+      autoDisplay: false
+    }, 'google_translate_element');
+    console.log('Google Translate 초기화 완료');
+  }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="{{ '/assets/js/translate.js' | relative_url }}"></script>
