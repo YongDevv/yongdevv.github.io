@@ -1,3 +1,14 @@
+
+function googleTranslateElementInit() {
+  console.log('Google Translate 초기화 중...');
+  new google.translate.TranslateElement({
+    pageLanguage: 'ko',
+    includedLanguages: 'ko,en,ja,zh-CN,de,fr,pt,vi',
+    autoDisplay: false
+  }, 'google_translate_element');
+  console.log('Google Translate 초기화 완료');
+}
+
 // Google Translate 초기화 함수
 document.addEventListener('DOMContentLoaded', function() {
   const transBtn = document.querySelector('.transBtn');

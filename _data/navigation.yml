@@ -14,35 +14,35 @@ docs:
   - title: "Frontend"
     children:
       - title: "JavaScript"
-        url: /javascript/
+        url: /javascript
         category: "javascript"
       - title: "TypeScript"
-        url: /typescript/
+        url: /typescript
         category: "typescript"
       - title: "React"
-        url: /react/
+        url: /react
         category: "react"
       - title: "Vue"
-        url: /vue/
+        url: /vue
         category: "vue"
   - title: "Publish"
     children:
       - title: "HTML"
-        url: /html/
+        url: /html
         category: "html"
       - title: "CSS"
-        url: /css/
+        url: /css
         category: "css"
       - title: "Web"
-        url: /web/
+        url: /web
         category: "web"
         children:
           - title: "웹 접근성"
-            url: /accessibility/
+            url: /accessibility
             category: "accessibility"
           - title: "웹 호환성 "
-            url: /crossbrowsing /
+            url: /crossbrowsing
             category: "crossbrowsing"
           - title: "웹 표준 "
-            url: /standards /
+            url: /standards
             category: "standards"
