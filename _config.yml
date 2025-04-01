@@ -17,7 +17,7 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 # Site Settings
 locale                   : "ko-KR"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : #"SYNCODE"
+title                    : "SYNCODE"
 title_separator          : "-"
 subtitle                 : 
 name                     : "SYNCODE"
@@ -210,6 +210,13 @@ incremental: false
 
 # Markdown Processing
 kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    block:
+      line_numbers: true
+      start_line: 1
   input: GFM
   hard_wrap: false
   auto_ids: true

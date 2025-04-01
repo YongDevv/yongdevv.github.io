@@ -2,12 +2,139 @@
    Syntax highlighting
    ========================================================================== */
 
-div.highlighter-rouge,
+/* One Dark Pro 색상 변수 */
+$od-black: #282c34;
+$od-red: #e06c75;
+$od-green: #98c379;
+$od-yellow: #e5c07b;
+$od-blue: #61afef;
+$od-magenta: #c678dd;
+$od-cyan: #56b6c2;
+$od-white: #abb2bf;
+$od-bright-black: #5c6370;
+
+/* 배경색 및 기본 텍스트 색상 */
+// .highlight {
+//   background: $od-black;
+//   color: $od-white;
+// }
+
+div.highlighter-rouge {
+  overflow: hidden;
+  margin-top: 40px;
+  border: 2px solid $lineColor1;
+  border-radius: 10px;
+  background: $od-black;
+  .codeHeader {
+    @include flex(row, wrap, between, center);
+    padding: 10px 16px;
+    background: $sidebarBg;
+    .macButtons {
+      @include flex(row, wrap, center, center);
+      gap: 8px;
+      .macButton {
+        @include size(14px);
+        border-radius: 50%;
+        &.close { background: #FF5F56; }
+        &.minimize { background: #FFBD2E; }
+        &.expand { background: #27C93F; }
+      }
+    }
+    .copyButton {
+      position: relative;
+      display: block;
+      @include size(32px);
+      border-radius: 6px;
+      border: 2px solid $lineColor1;
+      background: $sidebarPoint;
+      &:hover:before { color: $pure; }
+      &:before,&:after {
+        position: absolute;
+        @include aCenter;
+        @include size(18px);
+        font-family: "Font Awesome 6 Free";
+        font-size: 18px;
+      }
+      &:before {
+        content: '\f0c5';
+        color: $fontColor50;
+        font-weight: 400;
+        @include transition(all, 0.2s, linear);
+      }
+      &:after { 
+        content: unset;
+        font-weight: 700;
+        color: $mainColor;
+      }
+      &.copied{
+        &:before {
+          content: unset;
+        }
+        &:after {
+          content: '\f00c';
+        }
+      }
+    }
+  }
+  .highlight {
+    pre.highlight {
+      margin-top: unset;
+      padding: 16px;
+      width: 100%;
+      font-size: 16px;
+      background: $od-black;
+      color: $od-white;
+      table.rouge-table {
+        .rouge-gutter {
+          .lineno {
+            padding-right: 20px;
+            text-align: right;
+            color: $fontColor20;
+          }
+        }
+      }
+    }
+    .c, .cm, .cp, .c1, .cs { color: $od-bright-black; } /* 주석 */
+    .err { color: $od-red; } /* 오류 */
+    .k, .kc, .kd, .kp, .kr { color: $od-magenta; } /* 키워드 */
+    .o, .ow { color: $od-cyan; } /* 연산자 */
+    .p { color: $od-white; } /* 구두점 */
+    .gd { color: $od-red; } /* 삭제된 텍스트 */
+    .gi { color: $od-green; } /* 추가된 텍스트 */
+    .kn { color: $od-cyan; } /* 네임스페이스 키워드 */
+    .kt { color: $od-yellow; } /* 타입 키워드 */
+  
+    /* 리터럴 */
+    .l, .m, .mf, .mh, .mi, .mo, .il { color: $od-yellow; } /* 숫자 */
+    .s, .sb, .sc, .s2, .sh, .sx, .sr, .s1, .ss { color: $od-green; } /* 문자열 */
+    .se, .si { color: $od-yellow; } /* 이스케이프 문자열 */
+  
+    /* 이름 */
+    .na { color: $od-yellow; } /* 속성 이름 */
+    .nb { color: $od-blue; } /* 내장 이름 */
+    .nc { color: $od-yellow; } /* 클래스 이름 */
+    .no { color: $od-red; } /* 상수 이름 */
+    .nd { color: $od-cyan; } /* 데코레이터 이름 */
+    .ni { color: $od-white; } /* 엔티티 이름 */
+    .ne { color: $od-red; } /* 예외 이름 */
+    .nf { color: $od-blue; } /* 함수 이름 */
+    .nl { color: $od-white; } /* 라벨 이름 */
+    .nn { color: $od-yellow; } /* 네임스페이스 이름 */
+    .nx { color: $od-red; } /* 기타 이름 (변수) */
+    .py { color: $od-white; } /* 속성 이름 */
+    .nt { color: $od-red; } /* 태그 이름 */
+    .nv, .vc, .vg, .vi { color: $od-red; } /* 변수 이름 */
+  
+    /* 기타 */
+    .w { color: $od-white; } /* 공백 */
+    .bp { color: $od-blue; } /* 내장 의사 이름 */
+  }
+}
 figure.highlight {
   position: relative;
   margin-bottom: 1em;
-  background: $base00;
-  color: $base05;
+  background: $od-black;
+  color: $sidebarBg;
   font-family: $monospace;
   font-size: $type-size-6;
   line-height: 1.8;
@@ -25,305 +152,44 @@ figure.highlight {
   }
 }
 
-.highlight table {
-  margin-bottom: 0;
-  font-size: 1em;
-  border: 0;
+// .highlight table {
+//   margin-bottom: 0;
+//   font-size: 1em;
+//   border: 0;
 
-  td {
-    padding: 0;
-    width: calc(100% - 1em);
-    border: 0;
+//   td {
+//     padding: 0;
+//     width: calc(100% - 1em);
+//     border: 0;
 
-    /* line numbers*/
-    &.gutter,
-    &.rouge-gutter {
-      padding-inline-end: 1em;
-      width: 1em;
-      color: $base04;
-      border-inline-end: 1px solid $base04;
-      text-align: end;
-    }
+//     /* line numbers*/
+//     &.gutter,
+//     &.rouge-gutter {
+//       padding-inline-end: 1em;
+//       width: 1em;
+//       color: $base04;
+//       border-inline-end: 1px solid $base04;
+//       text-align: end;
+//     }
 
-    /* code */
-    &.code,
-    &.rouge-code {
-      padding-inline-start: 1em;
-    }
-  }
+//     /* code */
+//     &.code,
+//     &.rouge-code {
+//       padding-inline-start: 1em;
+//     }
+//   }
 
-  pre {
-    margin: 0;
-  }
-}
+//   pre {
+//     margin: 0;
+//   }
+// }
 
-.highlight pre {
-  width: 100%;
-}
+// .highlight .hll {
+//   background-color: $base06;
+// }
 
-.highlight .hll {
-  background-color: $base06;
-}
-.highlight {
-  .c {
-    /* Comment */
-    color: $base04;
-  }
-  .err {
-    /* Error */
-    color: $base08;
-  }
-  .k {
-    /* Keyword */
-    color: $base0e;
-  }
-  .l {
-    /* Literal */
-    color: $base09;
-  }
-  .n {
-    /* Name */
-    color: $base05;
-  }
-  .o {
-    /* Operator */
-    color: $base0c;
-  }
-  .p {
-    /* Punctuation */
-    color: $base05;
-  }
-  .cm {
-    /* Comment.Multiline */
-    color: $base04;
-  }
-  .cp {
-    /* Comment.Preproc */
-    color: $base04;
-  }
-  .c1 {
-    /* Comment.Single */
-    color: $base04;
-  }
-  .cs {
-    /* Comment.Special */
-    color: $base04;
-  }
-  .gd {
-    /* Generic.Deleted */
-    color: $base08;
-  }
-  .ge {
-    /* Generic.Emph */
-    font-style: italic;
-  }
-  .gh {
-    /* Generic.Heading */
-    color: $base05;
-    font-weight: bold;
-  }
-  .gi {
-    /* Generic.Inserted */
-    color: $base0b;
-  }
-  .gp {
-    /* Generic.Prompt */
-    color: $base04;
-    font-weight: bold;
-  }
-  .gs {
-    /* Generic.Strong */
-    font-weight: bold;
-  }
-  .gu {
-    /* Generic.Subheading */
-    color: $base0c;
-    font-weight: bold;
-  }
-  .kc {
-    /* Keyword.Constant */
-    color: $base0e;
-  }
-  .kd {
-    /* Keyword.Declaration */
-    color: $base0e;
-  }
-  .kn {
-    /* Keyword.Namespace */
-    color: $base0c;
-  }
-  .kp {
-    /* Keyword.Pseudo */
-    color: $base0e;
-  }
-  .kr {
-    /* Keyword.Reserved */
-    color: $base0e;
-  }
-  .kt {
-    /* Keyword.Type */
-    color: $base0a;
-  }
-  .ld {
-    /* Literal.Date */
-    color: $base0b;
-  }
-  .m {
-    /* Literal.Number */
-    color: $base09;
-  }
-  .s {
-    /* Literal.String */
-    color: $base0b;
-  }
-  .na {
-    /* Name.Attribute */
-    color: $base0d;
-  }
-  .nb {
-    /* Name.Builtin */
-    color: $base05;
-  }
-  .nc {
-    /* Name.Class */
-    color: $base0a;
-  }
-  .no {
-    /* Name.Constant */
-    color: $base08;
-  }
-  .nd {
-    /* Name.Decorator */
-    color: $base0c;
-  }
-  .ni {
-    /* Name.Entity */
-    color: $base05;
-  }
-  .ne {
-    /* Name.Exception */
-    color: $base08;
-  }
-  .nf {
-    /* Name.Function */
-    color: $base0d;
-  }
-  .nl {
-    /* Name.Label */
-    color: $base05;
-  }
-  .nn {
-    /* Name.Namespace */
-    color: $base0a;
-  }
-  .nx {
-    /* Name.Other */
-    color: $base0d;
-  }
-  .py {
-    /* Name.Property */
-    color: $base05;
-  }
-  .nt {
-    /* Name.Tag */
-    color: $base0c;
-  }
-  .nv {
-    /* Name.Variable */
-    color: $base08;
-  }
-  .ow {
-    /* Operator.Word */
-    color: $base0c;
-  }
-  .w {
-    /* Text.Whitespace */
-    color: $base05;
-  }
-  .mf {
-    /* Literal.Number.Float */
-    color: $base09;
-  }
-  .mh {
-    /* Literal.Number.Hex */
-    color: $base09;
-  }
-  .mi {
-    /* Literal.Number.Integer */
-    color: $base09;
-  }
-  .mo {
-    /* Literal.Number.Oct */
-    color: $base09;
-  }
-  .sb {
-    /* Literal.String.Backtick */
-    color: $base0b;
-  }
-  .sc {
-    /* Literal.String.Char */
-    color: $base05;
-  }
-  .sd {
-    /* Literal.String.Doc */
-    color: $base04;
-  }
-  .s2 {
-    /* Literal.String.Double */
-    color: $base0b;
-  }
-  .se {
-    /* Literal.String.Escape */
-    color: $base09;
-  }
-  .sh {
-    /* Literal.String.Heredoc */
-    color: $base0b;
-  }
-  .si {
-    /* Literal.String.Interpol */
-    color: $base09;
-  }
-  .sx {
-    /* Literal.String.Other */
-    color: $base0b;
-  }
-  .sr {
-    /* Literal.String.Regex */
-    color: $base0b;
-  }
-  .s1 {
-    /* Literal.String.Single */
-    color: $base0b;
-  }
-  .ss {
-    /* Literal.String.Symbol */
-    color: $base0b;
-  }
-  .bp {
-    /* Name.Builtin.Pseudo */
-    color: $base05;
-  }
-  .vc {
-    /* Name.Variable.Class */
-    color: $base08;
-  }
-  .vg {
-    /* Name.Variable.Global */
-    color: $base08;
-  }
-  .vi {
-    /* Name.Variable.Instance */
-    color: $base08;
-  }
-  .il {
-    /* Literal.Number.Integer.Long */
-    color: $base09;
-  }
-}
-
-.gist {
-  th, td {
-    border-bottom: 0;
-  }
-}
+// .gist {
+//   th, td {
+//     border-bottom: 0;
+//   }
+// }
