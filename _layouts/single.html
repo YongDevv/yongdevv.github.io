@@ -27,8 +27,7 @@ layout: default
         <!-- 검색 기능 -->
         {% if site.search == true %}
         <button class="searchToggle" type="button">
-          <span class="visually-hidden">{{ site.data.ui-text[site.locale].search_label | default: "검색 버튼" }}</span>
-          <i class="fas fa-search"></i>
+          <span class="hidden">{{ site.data.ui-text[site.locale].search_label | default: "검색 버튼" }}</span>
         </button>
         {% endif %}
         <!-- //검색 기능 -->
@@ -94,12 +93,26 @@ layout: default
             <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
           {% endif %}
           {% include page__taxonomy.html %}
+
+          {% comment %}
           {% include page__date.html %}
+          {% endcomment %}
+
+          {% if site.comments.provider and page.comments %}
+            {% if jekyll.environment == 'production' %}
+              {% include comments.html %}
+            {% else %}
+              <p>
+                Comments are configured with provider: <strong>{{ site.comments.provider }}</strong>,
+                but are disabled in non-production environments.
+              </p>
+            {% endif %}
+          {% endif %}
         </footer>
-  
-        {% if page.share %}{% include social-share.html %}{% endif %}
-  
-        <!-- {% include post_pagination.html %} -->
+        
+        {% comment %}
+        {% include post_pagination.html %}
+        {% endcomment %}
       </div>
   
       {% if site.comments.provider and page.comments %}

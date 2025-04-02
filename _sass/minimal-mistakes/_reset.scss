@@ -208,6 +208,8 @@ img,audio,video {
 
 body,input,select,textarea,button {
   font-family: $basicFont;
+  border: none;
+  background: unset;
 }
 code,pre {
   font-family: $codeFont;

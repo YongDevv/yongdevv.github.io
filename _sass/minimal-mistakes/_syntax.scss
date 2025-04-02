@@ -3,7 +3,7 @@
    ========================================================================== */
 
 /* One Dark Pro 색상 변수 */
-$od-black: #282c34;
+$od-black: #1f2125;
 $od-red: #e06c75;
 $od-green: #98c379;
 $od-yellow: #e5c07b;
@@ -97,6 +97,7 @@ div.highlight {
     code.hljs {
       counter-reset: lineCounter;
       padding: unset;
+      background: $od-black;
       .lineDiv {
         counter-increment: lineCounter;
         &:before {

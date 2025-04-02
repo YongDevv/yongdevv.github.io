@@ -52,11 +52,30 @@
   }
   .headerActions {
     @include flex(row, nowrap, between, center);
+    gap: 10px;
+    // 검색 기능
+    .searchToggle {
+      @include iconMask(ico-header-search, $pure, 24px, 24px);
+      @include size(40px);
+      border-radius: 6px; 
+      border: none;
+      background: $lineColor1;
+      &:before {
+        @include aCenter;
+        background: $fontColor50;
+        @include transition(all, 0.2s, linear);
+      }
+      &:hover:before { background: $pure; }
+    }
+
+    // 번역 기능
     .transTool {
+      @include size(40px);
       .transBtn {
         @include iconMask(ico-header-translate, $fontColor50, 24px, 24px);
         @include size(40px);
         border-radius: 6px; 
+        border: none;
         background: $lineColor1;
         &:before { 
           @include aCenter;
@@ -312,14 +331,100 @@ article.page {
         font-size: 28px;
       }
       .page__meta {
+        @include flex(row, wrap, between, center);
+        position: relative;
         margin-bottom: unset;
         color: $fontColor50;
         font-size: 16px;
+        .page__share {
+          position: absolute;
+          top: -10px;
+          right: 0;
+          @include size(46px);
+          border-radius: 23px;
+          background: $lineColor1;
+          transition: height 0.5s 0.2s cubic-bezier(0.64, 0.01, 0.43, 1.25);;
+          &.open { 
+            height: 189px;
+            padding-bottom: 5px;
+            .shareToggle {
+              background: #2684ff;
+              &:before { background: $pure; }
+            }
+            .shareList {
+              top: 0;
+              margin-top: 8px;
+              .shareBtn {
+                opacity: 1;
+                &.twitter {
+                  &:hover { 
+                    background: #24a4f2;
+                    i { color: $pure; }
+                  } 
+                }
+                &.facebook { 
+                  top: 0;
+                  &:hover { 
+                    background: #415e9b;
+                    i { color: $pure; }
+                  }
+                }
+                &.linkedin { 
+                  top: 0;
+                  &:hover {
+                    background: #1469c7;
+                    i { color: $pure; }
+                  }
+                }
+              }
+            }
+          }
+          .shareToggle {
+            @include iconMask(ico-post-share, $pure, 22px, 22px);
+            @include size(46px);
+            border-radius: 23px;
+            @include transition(all, 0.2s, linear);
+            z-index: 10;
+            &:before {
+              @include aCenter;
+              background: $fontColor50;
+              @include transition(all, 0.2s, linear);
+            }
+            &:hover:before { background: $pure; }
+          }
+          .shareList {
+            position: relative;
+            top: -44px;
+            left: 50%;
+            @include flex(column, wrap, center, center);
+            gap: 8px;
+            @include translate(x, -50%);
+            @include transition(all, 0.3s, 0.2s, ease-in-out);
+            .shareBtn {
+              transition: 
+                top 0.6s 0.2s cubic-bezier(0.64, 0.01, 0.07, 1.65),
+                opacity 0.6s 0.2s cubic-bezier(0.64, 0.01, 0.07, 1.65),
+                background-color 0.3s linear;
+              position: relative;
+              @include flex(row, wrap, center, center);
+              @include size(36px);
+              text-decoration: none;
+              border-radius: 18px;
+              background: $postBg;
+              opacity: 0; 
+              &.facebook { top: -44px; }
+              &.linkedin { top: -88px; }
+              i {
+                font-size: 14px; 
+                color: $fontColor50;
+              }
+            }
+          }
+        }
       }
     }
     .page__content,
-    .page__meta,
-    .page__share {
+    .page__meta {
       width: 100%;
     }
     .page__content {
