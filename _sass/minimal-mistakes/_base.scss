@@ -110,15 +110,6 @@ a {
 // }
 
 /* code */
-
-tt,
-code,
-kbd,
-samp,
-pre {
-  font-family: $monospace;
-}
-
 pre {
   overflow-x: auto; /* add scrollbars to wide code blocks*/
 }

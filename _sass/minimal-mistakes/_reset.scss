@@ -184,8 +184,17 @@ textarea {
   vertical-align: top; /* readability and alignment cross-browser*/
 }
 
-h1,h2,h3,h4,h5,h6,p,ol,ul,li,figure,figcaption,button,a {
-  font-family: $sans-serif;
+*, *::before,*::after {
+  box-sizing: border-box;
+}
+
+body,div,span,p,em,small,strong,b,i,dl,dt,dd,
+article,aside,details,footer,header,hgroup,menu,nav,section,summary,
+ol,ul,li,table,caption,tbody,tfoot,thead,tr,th,td,
+form,label,legend,figcaption,figure,object,iframe,blockquote,pre,fieldset,canvas,
+abbr,address,cite,code,del,dfn,ins,kbd,q,time,mark,samp,sub,sup,var,
+h1,h2,h3,h4,h5,h6,
+img,audio,video {
   margin: 0;
   padding: 0;
   margin-block-start: 0;
@@ -196,6 +205,14 @@ h1,h2,h3,h4,h5,h6,p,ol,ul,li,figure,figcaption,button,a {
   border: none;
   list-style: none;
 }
+
+body,input,select,textarea,button {
+  font-family: $basicFont;
+}
+code,pre {
+  font-family: $codeFont;
+}
+
 
 #google_translate_element {
 display: none;

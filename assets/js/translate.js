@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const transMenu = document.querySelector('.transMenu');
   const transItems = document.querySelectorAll('.transItem');
   const overlay = document.querySelector('.transTool .overlay');
-  console.log(overlay)
   
   // 번역 버튼 클릭 시 메뉴 토글
   transBtn.addEventListener('click', function(e) {

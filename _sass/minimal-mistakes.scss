@@ -11,10 +11,8 @@
 @import "minimal-mistakes/vendor/susy/susy";
 @import "minimal-mistakes/mixins";
 
-/* Custom */
-@import "minimal-mistakes/custom";
-
 /* Core CSS */
+@import "minimal-mistakes/font";
 @import "minimal-mistakes/reset";
 @import "minimal-mistakes/base";
 @import "minimal-mistakes/forms";
@@ -39,3 +37,6 @@
 @import "minimal-mistakes/archive";
 @import "minimal-mistakes/sidebar";
 @import "minimal-mistakes/print";
+
+/* Custom */
+@import "minimal-mistakes/custom";

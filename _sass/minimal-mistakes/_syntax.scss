@@ -19,12 +19,13 @@ $od-bright-black: #5c6370;
 //   color: $od-white;
 // }
 
-div.highlighter-rouge {
+div.highlight {
   overflow: hidden;
   margin-top: 40px;
   border: 2px solid $lineColor1;
   border-radius: 10px;
   background: $od-black;
+  box-shadow: 0 20px 68px rgba(0, 0, 0, 0.55);
   .codeHeader {
     @include flex(row, wrap, between, center);
     padding: 10px 16px;
@@ -76,81 +77,65 @@ div.highlighter-rouge {
       }
     }
   }
-  .highlight {
-    pre.highlight {
-      margin-top: unset;
-      padding: 16px;
-      width: 100%;
-      font-size: 16px;
-      background: $od-black;
-      color: $od-white;
-      table.rouge-table {
-        .rouge-gutter {
-          .lineno {
-            padding-right: 20px;
-            text-align: right;
-            color: $fontColor20;
-          }
+  pre {
+    margin-top: unset;
+    margin: unset;
+    padding: 24px 16px;
+    width: 100%;
+    font-size: 18px;
+    background: $od-black;
+    color: $od-white;
+    table.rouge-table {
+      .rouge-gutter {
+        .lineno {
+          padding-right: 20px;
+          text-align: right;
+          color: $fontColor20;
         }
       }
     }
-    .c, .cm, .cp, .c1, .cs { color: $od-bright-black; } /* 주석 */
-    .err { color: $od-red; } /* 오류 */
-    .k, .kc, .kd, .kp, .kr { color: $od-magenta; } /* 키워드 */
-    .o, .ow { color: $od-cyan; } /* 연산자 */
-    .p { color: $od-white; } /* 구두점 */
-    .gd { color: $od-red; } /* 삭제된 텍스트 */
-    .gi { color: $od-green; } /* 추가된 텍스트 */
-    .kn { color: $od-cyan; } /* 네임스페이스 키워드 */
-    .kt { color: $od-yellow; } /* 타입 키워드 */
-  
-    /* 리터럴 */
-    .l, .m, .mf, .mh, .mi, .mo, .il { color: $od-yellow; } /* 숫자 */
-    .s, .sb, .sc, .s2, .sh, .sx, .sr, .s1, .ss { color: $od-green; } /* 문자열 */
-    .se, .si { color: $od-yellow; } /* 이스케이프 문자열 */
-  
-    /* 이름 */
-    .na { color: $od-yellow; } /* 속성 이름 */
-    .nb { color: $od-blue; } /* 내장 이름 */
-    .nc { color: $od-yellow; } /* 클래스 이름 */
-    .no { color: $od-red; } /* 상수 이름 */
-    .nd { color: $od-cyan; } /* 데코레이터 이름 */
-    .ni { color: $od-white; } /* 엔티티 이름 */
-    .ne { color: $od-red; } /* 예외 이름 */
-    .nf { color: $od-blue; } /* 함수 이름 */
-    .nl { color: $od-white; } /* 라벨 이름 */
-    .nn { color: $od-yellow; } /* 네임스페이스 이름 */
-    .nx { color: $od-red; } /* 기타 이름 (변수) */
-    .py { color: $od-white; } /* 속성 이름 */
-    .nt { color: $od-red; } /* 태그 이름 */
-    .nv, .vc, .vg, .vi { color: $od-red; } /* 변수 이름 */
-  
-    /* 기타 */
-    .w { color: $od-white; } /* 공백 */
-    .bp { color: $od-blue; } /* 내장 의사 이름 */
+    code.hljs {
+      counter-reset: lineCounter;
+      padding: unset;
+      .lineDiv {
+        counter-increment: lineCounter;
+        &:before {
+          content: counter(lineCounter);
+          display: inline-block;
+          margin-right: 20px;
+          min-width: 27px;
+          text-align: right;
+          color: $fontColor20;
+        }
+        &:hover {
+          background: rgba(0, 0, 0, 0.15);
+          &:before { color: $fontColor80; }
+        }
+      }
+    }
   }
 }
-figure.highlight {
-  position: relative;
-  margin-bottom: 1em;
-  background: $od-black;
-  color: $sidebarBg;
-  font-family: $monospace;
-  font-size: $type-size-6;
-  line-height: 1.8;
-  border-radius: $border-radius;
+// figure.highlight {
+//   position: relative;
+//   margin-bottom: 1em;
+//   background: $od-black;
+//   color: $sidebarBg;
+//   font-family: $monospace;
+//   font-size: $type-size-6;
+//   line-height: 1.8;
+//   border-radius: $border-radius;
 
-  [dir=rtl] & {
-    direction: ltr;
-    text-align: start;
-  }
+//   [dir=rtl] & {
+//     direction: ltr;
+//     text-align: start;
+//   }
 
-  > pre,
-  pre.highlight {
-    margin: 0;
-    padding: 1em;
-  }
-}
+//   > pre,
+//   pre.highlight {
+//     margin: 0;
+//     padding: 1em;
+//   }
+// }
 
 // .highlight table {
 //   margin-bottom: 0;
