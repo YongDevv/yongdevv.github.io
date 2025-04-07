@@ -29,7 +29,7 @@ div.highlight {
   .codeHeader {
     @include flex(row, wrap, between, center);
     padding: 10px 16px;
-    background: $sidebarBg;
+    background: $color-bg;
     .macButtons {
       @include flex(row, wrap, center, center);
       gap: 8px;
@@ -47,7 +47,7 @@ div.highlight {
       @include size(32px);
       border-radius: 6px;
       border: 2px solid $lineColor1;
-      background: $sidebarPoint;
+      background: $color-sub;
       &:hover:before { color: $pure; }
       &:before,&:after {
         position: absolute;
@@ -65,7 +65,7 @@ div.highlight {
       &:after { 
         content: unset;
         font-weight: 700;
-        color: $mainColor;
+        color: $color-point;
       }
       &.copied{
         &:before {
@@ -120,7 +120,7 @@ div.highlight {
 //   position: relative;
 //   margin-bottom: 1em;
 //   background: $od-black;
-//   color: $sidebarBg;
+//   color: $color-bg;
 //   font-family: $monospace;
 //   font-size: $type-size-6;
 //   line-height: 1.8;

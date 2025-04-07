@@ -18,42 +18,49 @@ layout: default
   {% endunless %}
 {% endif %}
 
-<div id="main" role="main">
-  {% include sidebar.html %}
-  <div id="container" itemscope itemtype="https://schema.org/WebPage">
-    <header class="containerTop" itemscope itemtype="https://schema.org/WPHeader">
-      <strong class="categoryTitle">{{ page.category }}</strong>
-      <div class="headerActions" role="toolbar" aria-label="헤더 도구">
+<div id="main" role="main" itemscope itemtype="https://schema.org/WebPage">
+  <header id="header" itemscope itemtype="https://schema.org/WPHeader">
+    <div class="inner">
+      <!-- 로고 추가 -->
+      {% capture logo_path %}{{ site.logo }}{% endcapture %}
+      {% unless logo_path == empty %}
+      <a class="site-logo" href="{{ '/' | relative_url }}"><img src="{{ logo_path | relative_url }}" alt="{{ site.masthead_title | default: site.title }}"></a>
+      {% endunless %}
+      <!-- //로고 추가 -->
+      <div class="header-actions" role="toolbar" aria-label="헤더 도구">
         <!-- 검색 기능 -->
         {% if site.search == true %}
-        <button class="searchToggle" type="button">
+        <button class="search-toggle" type="button">
           <span class="hidden">{{ site.data.ui-text[site.locale].search_label | default: "검색 버튼" }}</span>
         </button>
         {% endif %}
         <!-- //검색 기능 -->
-
+  
         <!-- 번역 기능 -->
         <div id="google_translate_element"></div>
-        <div class="transTool" translate="no">
-          <button class="transBtn"><span class="hidden">언어 선택</span></button>
+        <div class="trans-tool" translate="no">
+          <button class="trans-btn"><span class="hidden">언어 선택</span></button>
           <div class="overlay"></div>
-          <div class="transMenu">
+          <div class="trans-menu">
             <strong>번역할 언어를 고르세요.</strong>
-            <ul class="transList">
-              <li class="transItem selected" data-lang="ko">한국어</li>
-              <li class="transItem" data-lang="en">English</li>
-              <li class="transItem" data-lang="ja">日本語</li>
-              <li class="transItem" data-lang="zh-CN">中文 (简体)</li>
-              <li class="transItem" data-lang="de">Deutsch</li>
-              <li class="transItem" data-lang="fr">Français</li>
-              <li class="transItem" data-lang="pt">Português</li>
-              <li class="transItem" data-lang="vi">Tiếng Việt</li>
+            <ul class="trans-list">
+              <li class="trans-item selected" data-lang="ko">한국어</li>
+              <li class="trans-item" data-lang="en">English</li>
+              <li class="trans-item" data-lang="ja">日本語</li>
+              <li class="trans-item" data-lang="zh-CN">中文 (简体)</li>
+              <li class="trans-item" data-lang="de">Deutsch</li>
+              <li class="trans-item" data-lang="fr">Français</li>
+              <li class="trans-item" data-lang="pt">Português</li>
+              <li class="trans-item" data-lang="vi">Tiếng Việt</li>
             </ul>
           </div>
         </div>
         <!-- //번역 기능 -->
       </div>
-    </header>
+    </div>
+  </header>
+  {% include sidebar.html %}
+  <div id="container">
   
     <article class="page" itemscope itemtype="https://schema.org/CreativeWork"{% if page.locale %} lang="{{ page.locale }}"{% endif %}>
       {% if page.title %}<meta itemprop="headline" content="{{ page.title | replace: '|', '&#124;' | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
@@ -64,6 +71,7 @@ layout: default
       <div class="page__inner-wrap">
         {% unless page.header.overlay_color or page.header.overlay_image %}
           <header>
+            <strong class="category-name">{{ page.category }}</strong>
             {% include breadcrumbs.html %} <!-- breadCrumb 가져오기 -->
             {% if page.title -%}
             <h2 id="page-title" class="page__title" itemprop="headline">
@@ -76,6 +84,7 @@ layout: default
         {% endunless %}
   
         <section class="page__content" itemprop="text">
+          {% comment %}
           {% if page.toc %}
             <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
               <nav class="toc">
@@ -84,6 +93,7 @@ layout: default
               </nav>
             </aside>
           {% endif %}
+          {% endcomment %}
           {{ content }}
           {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
         </section>
@@ -116,6 +126,14 @@ layout: default
       </div>
     </article>
     <aside class="aside">
+
+      {% if page.toc %}
+      <div class="toc">
+        <header><h4 class="nav__title"><i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}"></i> {{ page.toc_label | default: site.data.ui-text[site.locale].toc_label | default: "On this page" }}</h4></header>
+        {% include toc.html sanitize=true html=content h_min=1 h_max=3 class="toc__menu" skip_no_ids=true %}
+      </div>
+      {% endif %}
+
       {% comment %}<!-- only show related on a post page when `related: true` -->{% endcomment %}
       {% if page.id and page.related and site.related_posts.size > 0 %}
         {% include page__related.html posts=site.related_posts %}

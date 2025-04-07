@@ -4,6 +4,7 @@ category: Frontend
 categories: typescript
 permalink: typescript/post_1
 layout: single
+toc: true
 sidebar:
   nav: "docs"
 ---

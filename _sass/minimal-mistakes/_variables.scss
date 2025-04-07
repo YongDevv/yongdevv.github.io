@@ -64,12 +64,13 @@
   variables
 ==========================================================================
 */
+$header-height: 70px;
+$sidebar-width: 310px;
+$aside-width: 360px;
 
-$mainColor: #479bff;
 $lineColor1: #27292d;
 $lineColor2: #313540;
 $lineColor3: #585b63;
-$postBg: #1f2125;
 $pure: #fff;
 $fontColor80 : rgba($pure, 0.8);
 $fontColor50 : rgba($pure, 0.5);
@@ -78,16 +79,10 @@ $fontColor20 : rgba($pure, 0.2);
 $grayText1: #5a5a6d;
 $grayText2: #7f7f8d;
 
-$sidebarBg: #161719; 
-$sidebarPoint: #222327;
-$sidebarWidth: 310px;
-
-$headerHeight: 93px;
-
-$asideBg: #1a1c20;
-$asideWidth: 360px;
-
-
+$color-bg: #161719; 
+$color-sub: #222327;
+$color-base: #1f2125;
+$color-point: #2684ff;
 
 $wide: 1200px;
 $middle: 1024px;

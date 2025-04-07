@@ -11,10 +11,10 @@ function googleTranslateElementInit() {
 
 // Google Translate 초기화 함수
 document.addEventListener('DOMContentLoaded', function() {
-  const transBtn = document.querySelector('.transBtn');
-  const transMenu = document.querySelector('.transMenu');
-  const transItems = document.querySelectorAll('.transItem');
-  const overlay = document.querySelector('.transTool .overlay');
+  const transBtn = document.querySelector('.trans-btn');
+  const transMenu = document.querySelector('.trans-menu');
+  const transItems = document.querySelectorAll('.trans-item');
+  const overlay = document.querySelector('.trans-tool .overlay');
   
   // 번역 버튼 클릭 시 메뉴 토글
   transBtn.addEventListener('click', function(e) {
@@ -62,18 +62,18 @@ function changeLanguage(lang, langText) {
     if (selectBox) {
       selectBox.value = lang;
       selectBox.dispatchEvent(new Event('change'));
-      document.querySelector('.transBtn > span').textContent = langText;
+      document.querySelector('.trans-btn > span').textContent = langText;
     }
-    document.querySelector('.transMenu').style.display = 'none';
-    document.querySelector('.transTool .overlay').style.display = 'none';
-    document.querySelector('.transTool .overlay').style.opacity = 1;
+    document.querySelector('.trans-menu').style.display = 'none';
+    document.querySelector('.trans-tool .overlay').style.display = 'none';
+    document.querySelector('.trans-tool .overlay').style.opacity = 1;
   }, 300);
 }
 
 // 기본 언어 설정 함수
 function setDefaultLanguage(defaultLang) {
-  const defaultOption = document.querySelector(`.transItem[data-lang="${defaultLang}"]`);
+  const defaultOption = document.querySelector(`.trans-item[data-lang="${defaultLang}"]`);
   if (defaultOption) {
-    document.querySelector('.transBtn > span').textContent = defaultOption.textContent;
+    document.querySelector('.trans-btn > span').textContent = defaultOption.textContent;
   }
 }
