@@ -91,23 +91,3 @@ document.querySelectorAll('.copyButton').forEach((button, index) => {
     });
   });
 });
-
-// const highlightt.querySelectorAll('.highlighter-rouge pre.highlight');
-// highlight.forEach(function(block) {
-//   const code = block.textContent.split('\n');
-//   let numberedCode = '';
-  
-//   // 마지막 빈 줄 제거
-//   if (code[code.length - 1] === '') {
-//     code.pop();
-//   }
-  
-//   // 각 줄에 번호 추가
-//   code.forEach(function(line, index) {
-//     numberedCode += `<span class="line-number">${index + 1}</span>${line}\n`;
-//   });
-  
-//   // 코드 블록 내용 교체
-//   block.innerHTML = `<code>${numberedCode}</code>`;
-//   block.classList.add('line-numbers');
-// });

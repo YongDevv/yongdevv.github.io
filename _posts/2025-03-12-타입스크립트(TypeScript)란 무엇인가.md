@@ -66,7 +66,7 @@ sidebar:
   때문에 자바스크립트는 다른 언어들처럼 엄격한 문법이나 제약을 갖출 필요가 없었고, 버그로 인한 안전성 등을 포기하는 대신 아주 유연하게 설계되어 개발자들이 쉽고 빠르게 코드를 만들 수 있었다. 어차피 웹에서만 동작하고 간단한 작동만 하는 프로그램을 만들거니까 큰 상관이 없었다.
 
 <figure class="imageWrap">
-  <img src="https://i.imgur.com/V53GbJo.png" alt="Node.js의 기능 설명 이미지">
+  <img src="https://i.imgur.com/GhS9yNP.png" alt="Node.js의 기능 설명 이미지">
   <figcaption class="imageCaption">출처: 한 입 크기로 잘라먹는 타입스크립트</figcaption>
 </figure>
 

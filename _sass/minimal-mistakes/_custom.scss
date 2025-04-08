@@ -269,7 +269,7 @@ article.page {
   width: 100%;
   max-width: 900px;
   min-height: calc(100vh - #{$header-height});
-  .page__inner-wrap {
+  .page-wrap {
     margin: 0 auto;
     width: 100%;
     max-width: 900px;
@@ -312,8 +312,8 @@ article.page {
                 display: block;
                 font-family: "Font Awesome 6 Free";
                 font-weight: 900;
-                font-size: 14px;
-                top: 1px;
+                font-size: 12px;
+                top: 0;
                 left: 0;
               }
             }
@@ -334,19 +334,19 @@ article.page {
         }
         .sep { display: none; }
       }
-      .page__title { 
+      .page-title { 
         margin: 20px 0 14px;
         font-size: 28px;
       }
-      .page__meta {
+      .page-header-meta {
         @include flex(row, wrap, between, center);
         position: relative;
         margin-bottom: unset;
         color: $fontColor50;
-        font-size: 16px;
+        font-size: 15px;
         .page-share {
           position: absolute;
-          top: -10px;
+          top: -12px;
           right: 0;
           @include size(46px);
           border-radius: 23px;
@@ -451,31 +451,32 @@ article.page {
         }
       }
     }
-    .page__content,
-    .page__meta {
+    .page-content,
+    .page-meta {
       width: 100%;
     }
-    .page__content {
+    .page-content {
       color: #929498;
       .section {
-        & + .section { margin-top: 40px; }
+        & + .section { margin-top: 60px; }
         ol, ul {
-          margin-top: 20px;
+          margin-top: 24px;
           padding-left: 20px;
           >li {
             list-style: auto;
-            & + li { margin-top: 16px; }
+            & + li { margin-top: 24px; }
           }
         }
-        .imageWrap {
-          & + * { margin-top: 30px; }
-          .imageCaption {
-            margin-top: 10px;
-            width: 100%;
-            color: $fontColor20;
-            font-size: 14px;
-            text-align: center;
-          }
+      }
+      .imageWrap {
+        margin-top: 40px;
+        & + * { margin-top: 40px; }
+        .imageCaption {
+          margin-top: 16px;
+          width: 100%;
+          color: $fontColor20;
+          font-size: 14px;
+          text-align: center;
         }
       }
       h3, h4, h5, h6 {
@@ -491,9 +492,8 @@ article.page {
           opacity: 1;
         }
       }
-      h3 { font-size: 24px; margin-bottom: 16px; }
-      h4 { font-size: 20px; margin-bottom: 12px; }
-      h5 { font-size: 18px; margin-bottom: 10px; }
+      h3 { font-size: 22px; margin-bottom: 16px; }
+      h4 { font-size: 18px; margin-bottom: 12px; }
       p { 
         line-height: 1.6;
         font-size: 16px;
@@ -503,9 +503,40 @@ article.page {
           &::marker {
             color: $fontColor80;
           }
-          &:has(> h3)::marker { font-size: 24px; }
-          &:has(> h4)::marker { font-size: 20px; }
-          &:has(> h5)::marker { font-size: 18px; }
+          &:has(> h3)::marker { font-size: 22px; }
+          &:has(> h4)::marker { font-size: 18px; }
+        }
+      }
+    }
+    footer.page-footer-meta {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 2px solid $lineColor1;
+      .page-taxonomy {
+        >strong {
+          display: block;
+          margin-bottom: 12px;
+          font-size: 18px;
+        }
+        .category-list {
+          @include flex(row, wrap, start, center);
+          gap: 10px;
+          li {
+            @include flex(row, wrap, center, center);
+            &:hover {
+              a { color: $pure; }
+            }
+            >a {
+              padding: 0 16px;
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 40px;
+              color: $fontColor50;
+              border-radius: 4px;
+              border: 2px solid $lineColor1;
+              background: $color-bg;
+            }
+          }
         }
       }
     }
@@ -522,41 +553,96 @@ aside.aside {
   min-height: calc(100vh - #{$header-height});
   border-left: 2px solid $lineColor1;
   background: $color-bg;
-}
 
-// 하단 관련글
-.page__related {
-  .page__related-title {
-    @include iconMask(ico-aside-related, $pure, 22px, 22px);
-    margin-bottom: 20px;
-    padding-left: 30px;
-    font-size: 20px;
-    &::before { left: 0; }
-  }
-  .grid__wrapper {
-    @include flex(column, wrap, start, start);
-    gap: 20px;
-    .grid__item {
-      padding: 20px;
-      width: 100%;
-      line-height: 1.5;
-      border-radius: 8px;
-      border: 2px solid $lineColor1;
-      background: $color-base;
-      .archive__item-title {
-        font-size: 20px;
-        font-weight: 500;
-        >a {
-          @include ellipsis(2);
-          text-decoration: none;
+  // 목차 커스텀
+  .toc {
+    margin-bottom: 40px;
+    .toc-title {
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .toc-menu {
+      @include flex(column, wrap, start, start);
+      gap: 12px;
+      li {
+        @include flex(row, wrap, start, center);
+        a {
+          position: relative;
           color: $fontColor50;
-          &:hover { color: $pure; }
+          font-size: 14px;
+          font-weight: 400;
+          text-decoration: none;
+          @include transition(all, 0.2s, ease-out);
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            @include aCenter(vertical);
+            @include size(0px, 26px);
+            border-radius: 2px;
+            background: $fontColor20;
+            @include transition(all, 0.2s, ease-out);
+            z-index: -1;
+          }
+          &:hover {
+            padding-left: 12px;
+            color: $pure;
+            &:before {
+              @include size(3px, 26px);
+              background: $pure;
+            }
+          }
+        }
+        &.active {
+          a { 
+            padding: 0 8px;
+            color: $pure;
+            &:before {
+              @include size(100%, 26px);
+              background: rgba($color-point, 0.7);
+            }
+          }
         }
       }
-      .page__meta {
-        margin: 20px 0 0;
-        color: $fontColor20;
-        font-size: 14px;
+    }
+  }
+
+  // 하단 관련글
+  .page__related {
+    .page__related-title {
+      // @include iconMask(ico-aside-related, $pure, 22px, 22px);
+      margin-bottom: 12px;
+      font-size: 18px;
+      font-weight: 500;
+      &::before { left: 0; }
+    }
+    .grid__wrapper {
+      @include flex(column, wrap, start, start);
+      gap: 20px;
+      .grid__item {
+        padding: 20px;
+        width: 100%;
+        line-height: 1.5;
+        border-radius: 8px;
+        border: 2px solid $lineColor1;
+        background: $color-base;
+        .archive__item-title {
+          font-size: 20px;
+          font-weight: 500;
+          >a {
+            @include ellipsis(2);
+            text-decoration: none;
+            color: $fontColor50;
+            &:hover { color: $pure; }
+          }
+        }
+        .page__meta {
+          margin: 20px 0 0;
+          color: $fontColor20;
+          font-size: 14px;
+        }
       }
     }
   }

@@ -24,8 +24,7 @@ div.highlight {
   margin-top: 40px;
   border: 2px solid $lineColor1;
   border-radius: 10px;
-  background: $od-black;
-  box-shadow: 0 20px 68px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   .codeHeader {
     @include flex(row, wrap, between, center);
     padding: 10px 16px;
@@ -82,8 +81,8 @@ div.highlight {
     margin: unset;
     padding: 24px 16px;
     width: 100%;
-    font-size: 18px;
-    background: $od-black;
+    font-size: 16px;
+    background: #24272d;
     color: $od-white;
     table.rouge-table {
       .rouge-gutter {
@@ -97,22 +96,29 @@ div.highlight {
     code.hljs {
       counter-reset: lineCounter;
       padding: unset;
-      background: $od-black;
+      color: #9ca1b7;
+      background: transparent;
       .lineDiv {
         counter-increment: lineCounter;
         &:before {
           content: counter(lineCounter);
           display: inline-block;
-          margin-right: 20px;
+          margin-right: 24px;
           min-width: 27px;
           text-align: right;
-          color: $fontColor20;
+          color: $fontColor10;
         }
         &:hover {
           background: rgba(0, 0, 0, 0.15);
           &:before { color: $fontColor80; }
         }
       }
+      .hljs-title.function_ { color: #6788e9; }
+      .hljs-variable.language_ { color: #f3d680; }
+      .hljs-string { color: #a8c18c; }
+      .hljs-number { color: $pure; }
+      .hljs-comment { color: #515259; }
+      .hljs-subst { color: #99c4dd; }
     }
   }
 }

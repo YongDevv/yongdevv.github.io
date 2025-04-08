@@ -193,7 +193,7 @@ article,aside,details,footer,header,hgroup,menu,nav,section,summary,
 ol,ul,li,table,caption,tbody,tfoot,thead,tr,th,td,
 form,label,legend,figcaption,figure,object,iframe,blockquote,pre,fieldset,canvas,
 abbr,address,cite,code,del,dfn,ins,kbd,q,time,mark,samp,sub,sup,var,
-h1,h2,h3,h4,h5,h6,
+h1,h2,h3,h4,h5,h6,a,
 img,audio,video {
   margin: 0;
   padding: 0;
@@ -204,6 +204,8 @@ img,audio,video {
   background: unset;
   border: none;
   list-style: none;
+  letter-spacing: 0.01rem;
+  text-decoration: none;
 }
 
 body,input,select,textarea,button {

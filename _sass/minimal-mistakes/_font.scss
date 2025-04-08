@@ -1,2 +1,9 @@
+@font-face {
+    font-family: 'FiraCode';
+    src: url('/assets/fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900; /* 100에서 900까지의 가중치를 지원 */
+    font-style: normal;
+}
+
 $basicFont: "Pretendard Variable", Pretendard, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
-$codeFont: Monaco, Consolas, "Lucida Console", monospace !default;
+$codeFont: "FiraCode", Monaco, Consolas, "Lucida Console", monospace !default;

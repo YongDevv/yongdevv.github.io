@@ -68,13 +68,13 @@ layout: default
       {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">{% endif %}
       {% if page.last_modified_at %}<meta itemprop="dateModified" content="{{ page.last_modified_at | date_to_xmlschema }}">{% endif %}
   
-      <div class="page__inner-wrap">
+      <div class="page-wrap">
         {% unless page.header.overlay_color or page.header.overlay_image %}
           <header>
             <strong class="category-name">{{ page.category }}</strong>
             {% include breadcrumbs.html %} <!-- breadCrumb 가져오기 -->
             {% if page.title -%}
-            <h2 id="page-title" class="page__title" itemprop="headline">
+            <h2 id="page-title" class="page-title" itemprop="headline">
               <!-- <a href="{{ page.url | absolute_url }}" itemprop="url">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</a> -->
               {{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}
             </h2>
@@ -83,7 +83,7 @@ layout: default
           </header>
         {% endunless %}
   
-        <section class="page__content" itemprop="text">
+        <section class="page-content" itemprop="text">
           {% comment %}
           {% if page.toc %}
             <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
@@ -98,7 +98,7 @@ layout: default
           {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
         </section>
   
-        <footer class="page__meta">
+        <footer class="page-footer-meta">
           {% if site.data.ui-text[site.locale].meta_label %}
             <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
           {% endif %}
@@ -129,8 +129,8 @@ layout: default
 
       {% if page.toc %}
       <div class="toc">
-        <header><h4 class="nav__title"><i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}"></i> {{ page.toc_label | default: site.data.ui-text[site.locale].toc_label | default: "On this page" }}</h4></header>
-        {% include toc.html sanitize=true html=content h_min=1 h_max=3 class="toc__menu" skip_no_ids=true %}
+        <header><h4 class="toc-title">{{ page.toc_label | default: site.data.ui-text[site.locale].toc_label | default: "On this page" }}</h4></header>
+        {% include toc.html sanitize=true html=content h_min=1 h_max=3 class="toc-menu" skip_no_ids=true %}
       </div>
       {% endif %}
 
