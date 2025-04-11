@@ -27,6 +27,7 @@ layout: default
       <a class="site-logo" href="{{ '/' | relative_url }}"><img src="{{ logo_path | relative_url }}" alt="{{ site.masthead_title | default: site.title }}"></a>
       {% endunless %}
       <!-- //로고 추가 -->
+      <!-- 유틸 영역 -->
       <div class="header-actions" role="toolbar" aria-label="헤더 도구">
         <!-- 검색 기능 -->
         {% if site.search == true %}
@@ -56,7 +57,21 @@ layout: default
           </div>
         </div>
         <!-- //번역 기능 -->
+        
+        <!-- 프로필 -->
+        <div class="profile-header">
+          <div class="profile-image"><span class="hidden">프로필 이미지</span></div>
+          <div class="profile-name-wrapper">
+            <button class="profile-name" onclick="toggleLinks()">YongDev ▾</button>
+            <ul id="social-links" class="social-links hidden">
+              <li><a href="https://github.com/YongDevv" target="_blank">GitHub</a></li>
+              <li><a href="https://www.instagram.com/kah3721/" target="_blank">Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- //프로필 -->
       </div>
+      <!-- //유틸 영역 -->
     </div>
   </header>
   {% include sidebar.html %}
