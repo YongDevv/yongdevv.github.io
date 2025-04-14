@@ -130,15 +130,6 @@ img {
 /* Consistent form font size in all browsers, margin changes, misc */
 
 button,
-input,
-select,
-textarea {
-  margin: 0;
-  font-size: 100%;
-  vertical-align: middle;
-}
-
-button,
 input {
   line-height: normal; /* FF3/4 have !important on line-height in UA stylesheet*/
 }
@@ -193,7 +184,7 @@ article,aside,details,footer,header,hgroup,menu,nav,section,summary,
 ol,ul,li,table,caption,tbody,tfoot,thead,tr,th,td,
 form,label,legend,figcaption,figure,object,iframe,blockquote,pre,fieldset,canvas,
 abbr,address,cite,code,del,dfn,ins,kbd,q,time,mark,samp,sub,sup,var,
-h1,h2,h3,h4,h5,h6,a,
+h1,h2,h3,h4,h5,h6,a,button,
 img,audio,video {
   margin: 0;
   padding: 0;

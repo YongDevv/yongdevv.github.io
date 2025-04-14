@@ -41,7 +41,7 @@ layout: default
         <div id="google_translate_element"></div>
         <div class="trans-tool" translate="no">
           <button class="trans-btn"><span class="hidden">언어 선택</span></button>
-          <div class="overlay"></div>
+          <div class="overlay"><span class="hidden">클릭하면 이미지 닫힘</span></div>
           <div class="trans-menu">
             <strong>번역할 언어를 고르세요.</strong>
             <ul class="trans-list">
@@ -59,16 +59,36 @@ layout: default
         <!-- //번역 기능 -->
         
         <!-- 프로필 -->
-        <div class="profile-header">
-          <div class="profile-image"><span class="hidden">프로필 이미지</span></div>
-          <div class="profile-name-wrapper">
-            <button class="profile-name" onclick="toggleLinks()">YongDev ▾</button>
+        <div class="profile-wrapper">
+          <figure class="profile-image">
+            <button type="button" class="profile-zoom" aria-label="프로필 확대하기">
+              <img src="../assets/images/img-profile.png" alt="프로필 이미지">
+            </button>
+          </figure>
+          <div class="profile-toggle">
+            <button class="profile-name" onclick="toggleLinks()">YongDev</button>
             <ul id="social-links" class="social-links hidden">
               <li><a href="https://github.com/YongDevv" target="_blank">GitHub</a></li>
               <li><a href="https://www.instagram.com/kah3721/" target="_blank">Instagram</a></li>
             </ul>
           </div>
+          <div class="profile-modal">
+            <figure><img src="../assets/images/img-profile.png" alt="프로필 이미지"></figure>
+            <div class="overlay"><span class="hidden">클릭하면 이미지 닫힘</span></div>
+          </div>
         </div>
+        <script>
+          const profileZoom = document.querySelector('.profile-zoom')
+          const profileModal = document.querySelector('.profile-modal')
+          profileZoom.addEventListener('click', () => {
+            profileModal.classList.add('zoom');
+          })
+          document.addEventListener('click', (e) => {
+            if(!profileZoom.contains(e.target)) {
+              profileModal.classList.remove('zoom');
+            }
+          })
+        </script>
         <!-- //프로필 -->
       </div>
       <!-- //유틸 영역 -->

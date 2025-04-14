@@ -52,7 +52,7 @@ div.highlight {
         position: absolute;
         @include aCenter;
         @include size(18px);
-        font-family: "Font Awesome 6 Free";
+        font-family: $iconFont;
         font-size: 18px;
       }
       &:before {
