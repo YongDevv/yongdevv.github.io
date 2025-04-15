@@ -444,11 +444,11 @@
     color: inherit;
   }
 
-  .active {
-    margin-inline-start: -0.5em;
-    padding-inline: 0.5em;
-    font-weight: bold;
-  }
+  // .active {
+  //   margin-inline-start: -0.5em;
+  //   padding-inline: 0.5em;
+  //   font-weight: bold;
+  // }
 
   @include breakpoint(max-width $large - 1px) {
     position: relative;

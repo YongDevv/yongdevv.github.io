@@ -1,20 +1,115 @@
 ---
-layout: archive
+layout: default
 ---
 
-{{ content }}
+<div id="main" role="main">
+  <header id="header" itemscope itemtype="https://schema.org/WPHeader">
+    <div class="inner">
+      <!-- 로고 추가 -->
+      {% capture logo_path %}{{ site.logo }}{% endcapture %}
+      {% unless logo_path == empty %}
+      <a class="site-logo" href="{{ '/' | relative_url }}"><img src="{{ logo_path | relative_url }}" alt="{{ site.masthead_title | default: site.title }}"></a>
+      {% endunless %}
+      <!-- //로고 추가 -->
+      <!-- 유틸 영역 -->
+      <div class="header-actions" role="toolbar" aria-label="헤더 도구">
+        <!-- 검색 기능 -->
+        {% if site.search == true %}
+        <button class="search-toggle" type="button">
+          <span class="hidden">{{ site.data.ui-text[site.locale].search_label | default: "검색 버튼" }}</span>
+        </button>
+        {% endif %}
+        <!-- //검색 기능 -->
+  
+        <!-- 번역 기능 -->
+        <div id="google_translate_element"></div>
+        <div class="trans-tool" translate="no">
+          <button class="trans-btn"><span class="hidden">언어 선택</span></button>
+          <div class="overlay"><span class="hidden">클릭하면 이미지 닫힘</span></div>
+          <div class="trans-menu">
+            <strong>번역할 언어를 고르세요.</strong>
+            <ul class="trans-list">
+              <li class="trans-item selected" data-lang="ko">한국어</li>
+              <li class="trans-item" data-lang="en">English</li>
+              <li class="trans-item" data-lang="ja">日本語</li>
+              <li class="trans-item" data-lang="zh-CN">中文 (简体)</li>
+              <li class="trans-item" data-lang="de">Deutsch</li>
+              <li class="trans-item" data-lang="fr">Français</li>
+              <li class="trans-item" data-lang="pt">Português</li>
+              <li class="trans-item" data-lang="vi">Tiếng Việt</li>
+            </ul>
+          </div>
+        </div>
+        <!-- //번역 기능 -->
+        
+        <!-- 프로필 -->
+        <div class="profile-wrapper">
+          <figure class="profile-image">
+            <button type="button" class="profile-zoom" aria-label="프로필 확대하기">
+              <img src="../assets/images/img-profile.png" alt="프로필 이미지">
+            </button>
+          </figure>
+          <div class="profile-toggle">
+            <button class="profile-name" onclick="toggleLinks()">YongDev</button>
+            <ul id="social-links" class="social-links hidden">
+              <li><a href="https://github.com/YongDevv" target="_blank">GitHub</a></li>
+              <li><a href="https://www.instagram.com/kah3721/" target="_blank">Instagram</a></li>
+            </ul>
+          </div>
+          <div class="profile-modal">
+            <figure><img src="../assets/images/img-profile.png" alt="프로필 이미지"></figure>
+            <div class="overlay"><span class="hidden">클릭하면 이미지 닫힘</span></div>
+          </div>
+        </div>
+        <script>
+          const profileZoom = document.querySelector('.profile-zoom')
+          const profileModal = document.querySelector('.profile-modal')
+          profileZoom.addEventListener('click', () => {
+            profileModal.classList.add('zoom');
+          })
+          document.addEventListener('click', (e) => {
+            if(!profileZoom.contains(e.target)) {
+              profileModal.classList.remove('zoom');
+            }
+          })
+        </script>
+        <!-- //프로필 -->
+      </div>
+      <!-- //유틸 영역 -->
+    </div>
+  </header>
+  {% include sidebar.html %}
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+  <div id="container">
+    <section>
+      <h2 class="title">Documents</h2>
+      <section>
+        <h3>Folders</h3>
+        <ul>
+          <li>
+            <a href="">
+              
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+        {% if paginator %}
+          {% assign posts = paginator.posts %}
+        {% else %}
+          {% assign posts = site.posts %}
+        {% endif %}
+        
+        {% assign entries_layout = page.entries_layout | default: 'list' %}
+        <div class="entries-{{ entries_layout }}">
+          {% include documents-collection.html entries=posts type=entries_layout %}
+        </div>
+        
+        {% include paginator.html %}
+      </section>
+    </section>
 
-{% if paginator %}
-  {% assign posts = paginator.posts %}
-{% else %}
-  {% assign posts = site.posts %}
-{% endif %}
-
-{% assign entries_layout = page.entries_layout | default: 'list' %}
-<div class="entries-{{ entries_layout }}">
-  {% include documents-collection.html entries=posts type=entries_layout %}
+  </div>
 </div>
 
-{% include paginator.html %}
