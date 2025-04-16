@@ -81,17 +81,27 @@ layout: default
   {% include sidebar.html %}
 
   <div id="container">
-    <section>
-      <h2 class="title">Documents</h2>
-      <section>
-        <h3>Folders</h3>
-        <ul>
-          <li>
-            <a href="">
-              
-            </a>
-          </li>
-        </ul>
+    <section class="contents">
+      <h2 class="home-title">Documents</h2>
+      <section class="home-section">
+        <h3 class="title">Folders</h3>
+        <div class="swiper category-swiper">
+          <ul class="swiper-wrapper">
+            {% for group in site.data.navigation.docs %}
+              {% if group.children %}
+                {% for child in group.children %}
+                  <li class="swiper-slide">
+                    <a href="{{ child.url | relative_url }}">
+                      <img src="{{ '/assets/images/icon/ico-home-category.svg' | relative_url }}" alt="카테고리 아이콘">
+                      <strong>{{ child.title }}</strong>
+                      <span>{{ site.categories[child.category] | size }} Files</span>
+                    </a>
+                  </li>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
       </section>
       <section>
         <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
@@ -113,3 +123,26 @@ layout: default
   </div>
 </div>
 
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.category-swiper', {
+    spaceBetween: 20,
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      968: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+        // allowTouchMove: false,
+      },
+      1300: {
+        slidesPerView: 4,
+        // allowTouchMove: false,
+      }
+    }
+  });
+</script>

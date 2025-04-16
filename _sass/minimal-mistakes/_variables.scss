@@ -199,6 +199,12 @@ header { transform: translate(); }
 }
 .hidden { @include hidden; }
 
+@mixin r($size) {
+  @media (max-width: #{$size}) {
+    @content;
+  }
+}
+
    
 /*
    Typography
