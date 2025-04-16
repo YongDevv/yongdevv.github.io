@@ -197,7 +197,6 @@
     @include flex(row, wrap, start, start);
     padding-left: $sidebar-width;
     width: 100%;
-    min-height: 100vh;
     background: $color-base;
   }
 }
@@ -207,7 +206,6 @@
     padding-left: $sidebar-width;
     padding-right: $aside-width;
     width: 100%;
-    min-height: 100vh;
     background: $color-base;
   }
 }
