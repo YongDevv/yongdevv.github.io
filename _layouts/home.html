@@ -103,15 +103,15 @@ layout: default
           </ul>
         </div>
       </section>
-      <section>
-        <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+      <section class="home-section">
+        <h3 class="title">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
         {% if paginator %}
           {% assign posts = paginator.posts %}
         {% else %}
           {% assign posts = site.posts %}
         {% endif %}
         
-        {% assign entries_layout = page.entries_layout | default: 'list' %}
+        {% assign entries_layout = page.entries_layout | default: 'grid' %}
         <div class="entries-{{ entries_layout }}">
           {% include documents-collection.html entries=posts type=entries_layout %}
         </div>
@@ -132,17 +132,17 @@ layout: default
       0: {
         slidesPerView: 1,
       },
-      968: {
+      439: {
         slidesPerView: 2,
       },
-      1024: {
+      767: {
         slidesPerView: 3,
-        // allowTouchMove: false,
+        spaceBetween: 18,
       },
-      1300: {
+      1023: {
         slidesPerView: 4,
         // allowTouchMove: false,
-      }
+      },
     }
   });
 </script>

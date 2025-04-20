@@ -4,6 +4,8 @@ category: Frontend
 categories: typescript
 permalink: typescript/post_1
 layout: single
+header:
+ teaser: "https://i.imgur.com/MkTcD86.png"
 toc: true
 sidebar:
   nav: "docs"

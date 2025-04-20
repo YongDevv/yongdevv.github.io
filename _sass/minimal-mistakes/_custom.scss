@@ -1,15 +1,16 @@
 // 스크롤 커스텀
 ::-webkit-scrollbar {
-  width: 1px;
+  width: 12px;
 }
 ::-webkit-scrollbar-track {
-  background: $color-bg;
-}
-::-webkit-scrollbar-thumb {
   background: $lineColor1;
 }
+::-webkit-scrollbar-thumb {
+  background: $fontColor20;
+  border: 2px solid $lineColor1;
+}
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba($lineColor2, 1);
+  background: $fontColor50;
   cursor: grab;
 }
 
@@ -39,6 +40,9 @@
     padding: 0 30px;
     width: 100%;
     height: 100%;
+    @include r($narrow) {
+      padding: 0 18px;
+    }
     .site-logo {
       display: inline-block;
       img { max-height: 32px; }
@@ -198,6 +202,10 @@
     padding-left: $sidebar-width;
     width: 100%;
     background: $color-base;
+    @include transition(padding, 0.2s, linear);
+    @include r(1270px) {
+      padding-left: unset;
+    }
   }
 }
 .layout--single {
@@ -207,6 +215,10 @@
     padding-right: $aside-width;
     width: 100%;
     background: $color-base;
+    @include transition(padding, 0.2s, linear);
+    @include r(1270px) {
+      padding-left: unset;
+    }
   }
 }
 
@@ -214,11 +226,17 @@
 #sidebar {
   position: fixed;
   top: $header-height;
+  left: 0;
   padding-top: 40px;
   width: $sidebar-width;
   height: calc(100vh - #{$header-height});
   border-right: 2px solid $lineColor1;
   background: $color-bg;
+  @include transition(left, 0.2s, ease-out);
+
+  @include r(1270px) {
+    left: -100%;
+  }
 
   // LNB
   .nav__list { 
@@ -626,15 +644,28 @@ article.page {
 }
 
 aside.aside {
+  overflow-y: auto;
   position: fixed;
   top: $header-height;
   right: 0;
-  padding: 40px 30px;
+  padding: 40px 30px 140px 30px;
   width: $aside-width;
   max-height: calc(100vh - #{$header-height});
   min-height: calc(100vh - #{$header-height});
   border-left: 2px solid $lineColor1;
   background: $color-bg;
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+  &:after {
+    display: block;
+    content: "";
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 60px);
+    height: 140px;
+    background: linear-gradient(to top, $color-bg, transparent);
+  }
 
   // 목차 커스텀
   .toc {
@@ -703,25 +734,29 @@ aside.aside {
     .grid__wrapper {
       @include flex(column, wrap, start, start);
       gap: 20px;
-      .grid__item {
-        padding: 20px;
+      .grid-item {
+        overflow: hidden;
         width: 100%;
         line-height: 1.5;
         border-radius: 8px;
         border: 2px solid $lineColor1;
         background: $color-base;
-        .archive__item-title {
-          font-size: 20px;
-          font-weight: 500;
-          >a {
+        >a {
+          display: block;
+          color: $fontColor50;
+          &:hover .archive-item-title { color: $pure; }
+          .archive-item-title {
+            margin-top: 12px;
+            padding: 0 16px;
             @include ellipsis(2);
+            font-size: 16px;
+            font-weight: 500;
             text-decoration: none;
-            color: $fontColor50;
-            &:hover { color: $pure; }
           }
         }
-        .page__meta {
-          margin: 20px 0 0;
+        .page-meta {
+          margin-top: 4px;
+          padding: 0 16px 16px;
           color: $fontColor20;
           font-size: 14px;
         }
@@ -732,11 +767,14 @@ aside.aside {
 
 // 메인
 .contents {
-  padding: 40px;
+  padding: 30px;
   margin: 0 auto;
   width: 100%;
   max-width: 1240px;
   min-height: calc(100vh - #{$header-height});
+  @include r($narrow) {
+    padding: 18px;
+  }
 
   .home-title {
     margin-bottom: 20px;
@@ -780,4 +818,46 @@ aside.aside {
     }
   }
 
+}
+
+// 포스트 목록 레이아웃
+.entries-grid {
+  @include flex(row, wrap, start, stretch);
+  gap: 20px;
+  @include r(1024px) { gap: 18px; }
+  .grid-item {
+    width: calc(25% - 15px);
+    height: 100%;
+    @include r($middle) {
+      width: calc((100% / 3) - 12px);
+    }
+    @include r($narrow) {
+      width: calc(50% - 9px);
+    }
+    @include r(440px) {
+      width: 100%;
+    }
+
+    >a { @include flex(column, wrap, start, stretch); }
+    .archive-item-teaser {
+      overflow: hidden;
+      flex: 1;
+      height: auto;
+      border-radius: 8px;
+    }
+    strong {
+      display: block;
+      margin-top: 12px;
+      font-size: clamp(1.4rem, 2vw, 1.6rem);
+      color: $fontColor80;
+    }
+    .page-meta {
+      margin-top: 4px;
+      .page-meta-date {
+        display: block;
+        font-size: clamp(1.2rem, 2vw, 1.4rem);
+        color: $fontColor20;
+      }
+    }
+  }
 }

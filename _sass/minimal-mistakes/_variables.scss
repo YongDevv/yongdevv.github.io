@@ -88,7 +88,7 @@ $color-point: #2684ff;
 $wide: 1200px;
 $middle: 1024px;
 $narrow: 768px;
-$narrowest: 600px;
+$narrowest: 500px;
 header { transform: translate(); }
 @mixin r($size) {
   @if $size == $wide {
