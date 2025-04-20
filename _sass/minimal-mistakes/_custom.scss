@@ -99,7 +99,10 @@
           border-radius: 10px;
           background: $color-base;
           @include translate(both, -50%, -50%);
-          strong { font-weight: 500; }
+          strong { 
+            font-size: 1.8rem;
+            font-weight: 500;
+          }
           .trans-list {
             @include flex(column, nowrap, center, center);
             gap: 8px;
