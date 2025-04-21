@@ -30,6 +30,7 @@
       {% endcomment %}
       {% else %}
       <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <meta itemprop="position" content="{{ i }}" />
         <span itemprop="name">{{ page.category }}</span>
       </li>
         {% assign i = i | plus: 1 %}
