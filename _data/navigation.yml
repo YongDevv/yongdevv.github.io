@@ -17,7 +17,7 @@ docs:
         url: /javascript
         category: "javascript"
       - title: "TypeScript"
-        url: /typescript
+        url: /frontend/typescript
         category: "typescript"
       - title: "React"
         url: /react

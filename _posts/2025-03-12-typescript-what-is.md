@@ -2,8 +2,8 @@
 title: "타입스크립트(TypeScript)란 무엇인가?"
 description: "TypeScript란 무엇이고 왜 사용하는지, 그리고 JavaScript와의 차이점을 정리한 글입니다."
 category: Frontend
-categories: typescript
-permalink: typescript/post_1/
+categories: [frontend, typescript]
+permalink: frontend/typescript/post_1/
 layout: single
 header:
  teaser: "https://i.imgur.com/MkTcD86.png"

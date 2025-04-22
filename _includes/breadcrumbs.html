@@ -14,8 +14,11 @@
 <nav class="breadcrumbs">
   <ol itemscope itemtype="https://schema.org/BreadcrumbList">
     {% assign crumbs = page.url | split: '/' %}
+    {% assign crumb_count = crumbs | size %}
     {% assign i = 1 %}
-    {% for crumb in crumbs offset: 1 %}
+    {% for crumb in crumbs offset: 1 limit: 2 %}
+    {% assign current_path = current_path | append: '/' | append: crumb %}
+    <!-- DEBUG: loop index = {{ forloop.index0 }}, crumb = {{ crumb }} -->
       {% if forloop.first %}
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="{{ '/' | relative_url }}" itemprop="item"><i class="fa-solid fa-house home"><span itemprop="name">{{ site.data.ui-text[site.locale].breadcrumb_home_label | default: "Home" }}</span></i></a>
@@ -28,23 +31,22 @@
       {% comment %}
       <li class="current"{% if page.locale %} lang="{{ page.locale }}"{% endif %}>{{ page.title }}</li>
       {% endcomment %}
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="{{ current_path | downcase | relative_url }}" class="current" itemprop="item"><span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span></a>
+        <meta itemprop="position" content="{{ i }}" />
+      </li>
       {% else %}
       <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <meta itemprop="position" content="{{ i }}" />
-        <span itemprop="name">{{ page.category }}</span>
+        <span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span>
       </li>
-        {% assign i = i | plus: 1 %}
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="{{ crumb | downcase | relative_url }}" class="current" itemprop="item"><span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span></a>
-          {% comment %}
-          <a href="{{ crumb | downcase | replace: '%20', '-' | prepend: path_type | prepend: crumb_path | relative_url }}" itemprop="item"><span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span></a>
-          {% endcomment %}
-          <meta itemprop="position" content="{{ i }}" />
-        </li>
-        {% comment %}
-        <i class="fa-solid fa-chevron-right breadArrow"><span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span></i>
-        {% endcomment %}
+      {% assign i = i | plus: 1 %}
       {% endif %}
     {% endfor %}
   </ol>
 </nav>
+
+
+{% comment %}
+<!-- 백업 -->
+<a href="{{ crumb | downcase | replace: '%20', '-' | prepend: path_type | prepend: crumb_path | relative_url }}" itemprop="item"><span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span></a>
+{% endcomment %}

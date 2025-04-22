@@ -1,7 +1,7 @@
 ---
 title: "TypeScript"
 layout: archive
-permalink: /typescript
+permalink: /frontend/typescript
 author_profile: true
 sidebar_main: true
 types: posts
