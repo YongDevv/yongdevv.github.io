@@ -1,6 +1,17 @@
 /* Copyright comment */
 @import "minimal-mistakes/copyright";
 
+/* Base */
+@import "minimal-mistakes/base/color";
+@import "minimal-mistakes/base/font";
+@import "minimal-mistakes/base/size";
+@import "minimal-mistakes/base/define";
+@import "minimal-mistakes/base/defineBasic";
+@import "minimal-mistakes/base/reset";
+
+/* Component */
+@import "minimal-mistakes/component/button";
+
 /* Variables */
 @import "minimal-mistakes/variables";
 
@@ -12,9 +23,6 @@
 @import "minimal-mistakes/mixins";
 
 /* Core CSS */
-@import "minimal-mistakes/font";
-@import "minimal-mistakes/reset";
-@import "minimal-mistakes/base";
 @import "minimal-mistakes/forms";
 @import "minimal-mistakes/tables";
 @import "minimal-mistakes/animations";

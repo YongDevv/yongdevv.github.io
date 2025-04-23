@@ -1,0 +1,4 @@
+@mixin z-index($breakpoint, $value1, $value2:empty) {
+    @if $breakpoint == each { @include each(z-index, $value1, $value2); }
+    @else { @include r($breakpoint) { z-index: $value1; } }
+}

@@ -327,8 +327,9 @@
 // 카테고리 목록 화면
 .archive {
     overflow-y: auto;
+    margin: 0 auto;
     padding: 40px;
-    max-width: 1200px; 
+    max-width: 900px; 
     max-height: calc(100vh - #{$header-height});
     min-height: calc(100vh - #{$header-height});
   .archive__item {
@@ -780,16 +781,16 @@ aside.aside {
   }
 
   .home-title {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     padding-bottom: 20px;
     border-bottom: 2px solid $lineColor1;
     color: $fontColor80;
     font-size: 26px;
   }
   .home-section {
-    & + .home-section { margin-top: 40px; }
+    & + .home-section { margin-top: 80px; }
     >.title {
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       color: $fontColor80;
       font-size: 20px;
     }
