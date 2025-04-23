@@ -25,6 +25,7 @@
 
           <meta itemprop="position" content="{{ i }}" />
         </li>
+        {% assign i = i | plus: 1 %}
         <!-- <i class="fa-solid fa-chevron-right breadArrow"><span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span></i> -->
       {% endif %}
       {% if forloop.last %}
@@ -38,6 +39,7 @@
       {% else %}
       <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
         <span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span>
+        <meta itemprop="position" content="{{ i }}" />
       </li>
       {% assign i = i | plus: 1 %}
       {% endif %}
