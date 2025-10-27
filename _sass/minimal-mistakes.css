@@ -936,7 +936,7 @@ article.page .page__inner-wrap > header .breadcrumbs > ol > li + li:before {
   content: "\f054";
   position: absolute;
   display: block;
-  font-family: "Font Awesome 6 Free";
+  font-family: "Font Awesome 7 Free";
   font-weight: 900;
   font-size: 14px;
   top: 1px;
