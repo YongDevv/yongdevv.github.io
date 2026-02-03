@@ -1,17 +1,5 @@
-
-$(document).ready(function () {
-  // Search toggle
-  $(".search-toggle").on("click", function () {
-    $(".search-content").toggleClass("is--visible");
-    $(".initial-content").toggleClass("is--hidden");
-    // set focus on input
-    setTimeout(function () {
-        $(".search-content input").focus();
-    }, 400);
-  });
-})
-
-document.addEventListener('DOMContentLoaded', function () {
+function toggleShare() {
+  // 게시글 공유버튼 기능
   const pageShare = document.querySelector('.page-share');
   const shareToggle = document.querySelector('.share-toggle');
   shareToggle.addEventListener('click', function() {
@@ -31,4 +19,21 @@ document.addEventListener('DOMContentLoaded', function () {
   pageShare.addEventListener('click', function(e) {
     e.stopPropagation();
   });
+}
+
+
+$(document).ready(function () {
+  // Search toggle
+  $(".search-toggle").on("click", function () {
+    $(".search-content").toggleClass("is--visible");
+    $(".initial-content").toggleClass("is--hidden");
+    // set focus on input
+    setTimeout(function () {
+        $(".search-content input").focus();
+    }, 400);
+  });
+})
+
+document.addEventListener('DOMContentLoaded', function () {
+  toggleShare();
 })
