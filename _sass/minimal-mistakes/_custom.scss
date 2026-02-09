@@ -249,7 +249,6 @@
   // LNB
   .nav__list { 
     overflow-y: auto;
-    padding-top: 40px;
     height: calc(100vh - 80px);
     &::-webkit-scrollbar {
       width: 0px;
@@ -257,14 +256,19 @@
     &:after {
       display: block;
       content: "";
-      position: fixed;
-      bottom: 0;
+      position: absolute;
+      bottom: 80px;
       width: 100%;
       height: 140px;
       background: linear-gradient(to top, $color-bg, transparent);
     }
     .nav__items {
-      margin: 0 20px 0 30px;
+      overflow-y: auto;
+      margin: 40px 20px 0 30px;
+      max-height: calc(100vh - ($header-height + 80px));
+      &::-webkit-scrollbar {
+        width: 0px;
+      }
       >li {
         &+li { margin-top: 24px; }
       }
@@ -820,6 +824,8 @@ aside.aside {
       font-size: 20px;
     }
     .category-swiper {
+      padding: 10px;
+      margin: -10px;
       .swiper-wrapper {
         // @include flex(row, wrap, start, center);
         .swiper-slide {
@@ -828,6 +834,13 @@ aside.aside {
             padding: 20px 20px 12px;
             border-radius: 8px;
             background: $color-bg;
+            &:hover {
+              box-shadow: 0 5px 10px 4px $color-bg;
+              transform: translateY(-5px);
+            }
+            &:active {
+              transform: translateY(5px);
+            }
             >img { 
               width: 30px;
             }
@@ -866,11 +879,21 @@ aside.aside {
     @include r(440px) {
       width: 100%;
     }
-
     >a { 
       @include flex(column, wrap, start, stretch);
       @include transition(all, 0.2s, linear);
-                            &:hover { color: $pure; }
+      &:hover { 
+        .archive-item-teaser {
+          box-shadow: 0 5px 10px 4px $color-bg;
+          transform: translateY(-5px);
+        }
+        .archive-item-title { color: $pure !important; }
+      }
+      &:active {
+        .archive-item-teaser {
+          transform: translateY(5px);
+        }
+      }
     }
     .archive-item-teaser {
       overflow: hidden;
@@ -889,6 +912,7 @@ aside.aside {
       margin-top: 12px;
       font-size: clamp(1.4rem, 2vw, 1.6rem);
       color: $fontColor80;
+      @include transition(all, 0.2s, linear);
     }
     .page-meta {
       margin-top: 4px;
