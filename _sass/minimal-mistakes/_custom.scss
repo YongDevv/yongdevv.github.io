@@ -417,18 +417,21 @@ article.page {
       border-bottom: 2px solid $lineColor1;
       .category-wrap {
         @include flex(row, wrap, between, center);
-        padding: 10px;
+        padding: 20px;
         border-radius: 10px;
         background: $lineColor1;
         .category-name {
           display: block;
-          padding-left: 40px;
-          font-size: 26px;
+          padding-left: 34px;
+          font-size: 20px;
           @include icon(ico-header-title, 26px, auto);
           &:before {
             content: '';
             left: 0;
-            @include size(26px, 20px);
+            width: 24px;
+            aspect-ratio: 1 / 0.769;
+            background-size: 100%, auto;
+            background-position: center;
           }
         }
         .breadcrumbs {
