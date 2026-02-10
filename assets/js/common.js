@@ -29,7 +29,7 @@ function toggleShare() {
 
 // sidebar, aside 그라디언트 스크롤 감지
 function sideSentinel() {
-  const scrollContainers = document.querySelectorAll('.nav_list, .aside');
+  const scrollContainers = document.querySelectorAll('.nav__list, .aside');
 
   scrollContainers.forEach(container => {
     // container 끝마다 감시 태그 삽입
