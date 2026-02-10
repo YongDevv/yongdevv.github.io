@@ -249,7 +249,8 @@
   // LNB
   .nav__list { 
     overflow-y: auto;
-    height: calc(100vh - 80px);
+    margin-bottom: unset;
+    max-height: calc(100vh - ($header-height + 80px));
     &::-webkit-scrollbar {
       width: 0px;
     }
@@ -261,6 +262,12 @@
       width: 100%;
       height: 140px;
       background: linear-gradient(to top, $color-bg, transparent);
+      pointer-events: none;
+      @include transition(all, 0.2s, ease);
+      opacity: 1;
+    }
+    &.is-end::after {
+      opacity: 0;
     }
     .nav__items {
       overflow-y: auto;
@@ -698,6 +705,12 @@ aside.aside {
     width: calc(100% - 60px);
     height: 140px;
     background: linear-gradient(to top, $color-bg, transparent);
+    pointer-events: none;
+    @include transition(all, 0.2s, ease);
+    opacity: 1;
+  }
+  &.is-end::after {
+    opacity: 0;
   }
 
   // 목차 커스텀

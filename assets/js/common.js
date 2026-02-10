@@ -26,3 +26,37 @@ function toggleShare() {
     e.stopPropagation();
   });
 }
+
+// sidebar, aside 그라디언트 스크롤 감지
+function sideSentinel() {
+  const scrollContainers = document.querySelectorAll('.nav_list, .aside');
+
+  scrollContainers.forEach(container => {
+    // container 끝마다 감시 태그 삽입
+    const sentinel = document.createElement('div');
+    sentinel.style.height = '1px';
+    sentinel.style.visibility = 'hidden';
+    container.appendChild(sentinel);
+
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0]
+
+      if(entry.isIntersecting) { // 감시 태그가 화면에 들어오면
+        container.classList.add('is-end')
+      } else { 
+        container.classList.remove('is-end');
+      }
+    }, {
+      root: container, // 감지 타겟
+      threshold: 0.1  // 감지 수치
+    })
+
+    observer.observe(sentinel);
+  })
+
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  toggleShare();
+  sideSentinel();
+})

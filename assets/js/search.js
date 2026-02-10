@@ -9,7 +9,3 @@ $(document).ready(function () {
     }, 400);
   });
 })
-
-document.addEventListener('DOMContentLoaded', function () {
-  toggleShare();
-})
