@@ -415,62 +415,67 @@ article.page {
       padding-bottom: 30px;
       margin-bottom: 30px;
       border-bottom: 2px solid $lineColor1;
-      .category-name {
-        display: block;
-        margin-bottom: 40px;
-        padding-left: 40px;
-        font-size: 26px;
-        @include icon(ico-header-title, 26px, auto);
-        &:before {
-          content: '';
-          left: 0;
-          @include size(26px, 20px);
-        }
-      }
-      .breadcrumbs {
-        padding: unset;
-        max-width: unset;
-        >ol { 
-          @include flex(row, wrap, start, center);
-          gap: 8px;
-          margin-top: unset;
-          width: 100%;
-          text-align: center;
-          >li { 
-            position: relative;
-            line-height: 20px;
-            color: $fontColor50;
-            letter-spacing: 0.03em;
-            font-size: 15px;
-            &+li {
-              padding-left: 18px;
-              &:before { 
-                content: "\f054";
-                position: absolute;
-                display: block;
-                font-family: $iconFont;
-                font-weight: 900;
-                font-size: 12px;
-                top: 0;
-                left: 0;
-              }
-            }
-            .current {
-              font-weight: 500;
-              color: $pure;
-            }
+      .category-wrap {
+        @include flex(row, wrap, between, center);
+        padding: 10px;
+        border-radius: 10px;
+        background: $lineColor1;
+        .category-name {
+          display: block;
+          padding-left: 40px;
+          font-size: 26px;
+          @include icon(ico-header-title, 26px, auto);
+          &:before {
+            content: '';
+            left: 0;
+            @include size(26px, 20px);
           }
         }
-        i { 
-          font-size: 14px;
-          line-height: 20px;
-          &.home { color: $color-point; }
-          &.breadArrow { color: $lineColor3;}
+        .breadcrumbs {
+          padding: unset;
+          max-width: unset;
+          >ol { 
+            @include flex(row, wrap, start, center);
+            gap: 8px;
+            margin-top: unset;
+            width: 100%;
+            text-align: center;
+            >li { 
+              position: relative;
+              line-height: 20px;
+              color: $fontColor50;
+              letter-spacing: 0.03em;
+              font-size: 15px;
+              &+li {
+                padding-left: 18px;
+                &:before { 
+                  content: "\f054";
+                  position: absolute;
+                  display: block;
+                  font-family: $iconFont;
+                  font-weight: 900;
+                  font-size: 12px;
+                  top: 0;
+                  left: 0;
+                }
+              }
+              .current {
+                font-weight: 500;
+                color: $pure;
+              }
+            }
+          }
+          i { 
+            font-size: 14px;
+            line-height: 20px;
+            &.home { color: $pure; }
+            &.breadArrow { color: $lineColor3;}
+          }
+          .home {
+            span[itemprop="name"] { display: none; }
+          }
+          .sep { display: none; }
         }
-        .home {
-          span[itemprop="name"] { display: none; }
-        }
-        .sep { display: none; }
       }
       .page-title { 
         margin: 20px 0 14px;
@@ -688,7 +693,7 @@ aside.aside {
   top: $header-height;
   right: calc((100% - 1920px) / 2);
   @include right($full, 0);
-  padding: 40px 30px 140px 30px;
+  padding: 40px 30px 40px 30px;
   width: $aside-width;
   max-height: calc(100vh - #{$header-height});
   min-height: calc(100vh - #{$header-height});

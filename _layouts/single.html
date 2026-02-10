@@ -106,8 +106,10 @@ layout: default
       <div class="page-wrap">
         {% unless page.header.overlay_color or page.header.overlay_image %}
           <header>
-            <strong class="category-name">{{ page.category }}</strong>
-            {% include breadcrumbs.html %} <!-- breadCrumb 가져오기 -->
+            <div class="category-wrap">
+              <strong class="category-name">{{ page.category }}</strong>
+              {% include breadcrumbs.html %} <!-- breadCrumb 가져오기 -->
+            </div>
             {% if page.title -%}
             <h2 id="page-title" class="page-title" itemprop="headline">
               <!-- <a href="{{ page.url | absolute_url }}" itemprop="url">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</a> -->
