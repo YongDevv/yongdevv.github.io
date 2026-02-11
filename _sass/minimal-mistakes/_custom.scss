@@ -471,7 +471,10 @@ article.page {
           i { 
             font-size: 14px;
             line-height: 20px;
-            &.home { color: $pure; }
+            &.home { 
+              color: $pure;
+              >span { display: none; }
+            }
             &.breadArrow { color: $lineColor3;}
           }
           .home {
