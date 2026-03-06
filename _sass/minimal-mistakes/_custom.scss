@@ -659,14 +659,19 @@ article.page {
       }
     }
     footer.page-footer-meta {
-      margin-top: 40px;
-      padding-top: 40px;
+      margin-top: 6rem;
+      padding-top: 3rem;
       border-top: 2px solid $lineColor1;
+      >:not(:first-child) {
+        margin-top: 30rem;
+        padding-top: 30rem;
+        border-top: 2px solid #27292d;
+      }
       .page-taxonomy {
         >strong {
           display: block;
-          margin-bottom: 12px;
-          font-size: 18px;
+          margin-bottom: 2rem;
+          font-size: 20px;
         }
         .category-list {
           @include flex(row, wrap, start, center);
@@ -677,16 +682,37 @@ article.page {
               a { color: $pure; }
             }
             >a {
-              padding: 0 12px;
+              padding: 0 1.2rem 0 3rem;
+              position: relative;
               font-size: 14px;
               font-weight: 400;
-              line-height: 32px;
+              line-height: 36px;
               color: $fontColor50;
-              border-radius: 4px;
-              border: 2px solid $lineColor1;
+              border-radius: 6px;
+              border: 1px dashed $lineColor2;
               background: $color-bg;
+              &:before {
+                content: "\23";
+                position: absolute;
+                top: 50%;
+                left: 0.8rem;
+                width: 2rem;
+                height: 2rem;
+                font-family: "Font Awesome 7 Free";
+                font-size: 12px;
+                font-weight: 700;
+                @include flex(row, wrap, center, center);
+                @include translate(y, -50%);
+                @include transition(all, 0.2s, linear);
+              }
             }
           }
+        }
+      }
+      .page__comments {
+        width: 100%;
+        .page__comments-title {
+          display: none;
         }
       }
     }

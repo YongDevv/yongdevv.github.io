@@ -139,6 +139,24 @@ layout: default
           {% if site.data.ui-text[site.locale].meta_label %}
             <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
           {% endif %}
+
+          <div class="page-actions">
+            <button id="like-btn" class="footer-btn" onclick="handleLike()">
+              <div class="heart-wrapper">
+                <i id="static-heart" class="far fa-heart"></i>
+                <div id="lottie-heart"></div>
+              </div>
+            </button>
+
+            <button id="bookmark-btn" class="footer-btn" onclick="toggleAction(this)">
+              <i class="far fa-bookmark"></i>
+            </button>
+
+            <button id="share-btn" class="footer-btn" onclick="copyLink()">
+              <i class="fas fa-share-alt"></i>
+            </button>
+          </div>
+
           {% include page__taxonomy.html %}
 
           {% comment %}
