@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   // Search toggle
   $(".search-toggle").on("click", function () {
@@ -8,27 +7,5 @@ $(document).ready(function () {
     setTimeout(function () {
         $(".search-content input").focus();
     }, 400);
-  });
-})
-
-document.addEventListener('DOMContentLoaded', function () {
-  const pageShare = document.querySelector('.page-share');
-  const shareToggle = document.querySelector('.share-toggle');
-  shareToggle.addEventListener('click', function() {
-    if(!pageShare.classList.contains('open')) {
-      pageShare.classList.add('open');
-    } else {
-      pageShare.classList.remove('open');
-    }
-  })
-  
-  document.addEventListener('click', function(e) {
-    if(!pageShare.contains(e.target)) {
-      pageShare.classList.remove('open');
-    }
-  });
-  
-  pageShare.addEventListener('click', function(e) {
-    e.stopPropagation();
   });
 })

@@ -24,6 +24,7 @@
   max-width: 100%;
   -webkit-animation-delay: 0.15s;
   animation-delay: 0.15s;
+  background: $color-bg;
 }
 
 // 헤더 커스텀
@@ -37,7 +38,9 @@
   z-index: 100;
   .inner {
     @include flex(row, nowrap, between, center);
+    margin: 0 auto;
     padding: 0 30px;
+    max-width: 1920px;
     width: 100%;
     height: 100%;
     @include r($narrow) {
@@ -55,6 +58,7 @@
         @include iconMask(ico-header-search, $pure, 24px, 24px);
         @include size(40px);
         border-radius: 6px; 
+        cursor: pointer;
         &:before {
           @include aCenter;
           background: $fontColor50;
@@ -69,6 +73,7 @@
         .trans-btn {
           @include iconMask(ico-header-translate, $fontColor50, 24px, 24px);
           @include size(40px);
+          cursor: pointer;
           &:before { 
             @include aCenter;
             @include transition(all, 0.2s, linear);
@@ -214,8 +219,10 @@
 .layout--single {
   #container {
     @include flex(row, wrap, start, start);
+    margin: 0 auto;
     padding-left: $sidebar-width;
     padding-right: $aside-width;
+    max-width: 1920px;
     width: 100%;
     background: $color-base;
     @include transition(padding, 0.2s, linear);
@@ -229,32 +236,58 @@
 #sidebar {
   position: fixed;
   top: $header-height;
-  left: 0;
-  padding-top: 40px;
+  left: calc((100% - 1920px) / 2);
+  @include left($full, 0);
   width: $sidebar-width;
   height: calc(100vh - #{$header-height});
   border-right: 2px solid $lineColor1;
   background: $color-bg;
   @include transition(left, 0.2s, ease-out);
-
   @include r(1270px) {
     left: -100%;
   }
-
   // LNB
   .nav__list { 
+    overflow-y: auto;
+    margin-bottom: unset;
+    max-height: calc(100vh - (#{$header-height} + 80px));
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
+    &:after {
+      display: block;
+      content: "";
+      position: absolute;
+      bottom: 80px;
+      width: 100%;
+      height: 140px;
+      background: linear-gradient(to top, $color-bg, transparent);
+      pointer-events: none;
+      @include transition(all, 0.2s, ease);
+      opacity: 1;
+    }
+    &.is-end::after {
+      opacity: 0;
+    }
     .nav__items {
-      margin: 0 20px 0 30px;
+      overflow-y: auto;
+      margin: 40px 20px 0 30px;
+      max-height: calc(100vh - ($header-height + 80px));
+      &::-webkit-scrollbar {
+        width: 0px;
+      }
       >li {
         &+li { margin-top: 24px; }
       }
       .nav__sub-title {
         @include flex(row, wrap, start, center);
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
         color: $fontColor80;
         font-family: $basicFont;
         font-size: 16px;
         font-weight: 500;
+        border-bottom: 2px dotted #27292d;
       }
       .depth2 {
         position: relative;
@@ -266,6 +299,7 @@
           color: $fontColor50;
           font-size: 14px;
           font-weight: 500;
+          @include transition(all, 0.2s, linear);
           &.active {
             color: $pure;
             background: $color-point;
@@ -381,62 +415,73 @@ article.page {
       padding-bottom: 30px;
       margin-bottom: 30px;
       border-bottom: 2px solid $lineColor1;
-      .category-name {
-        display: block;
-        margin-bottom: 40px;
-        padding-left: 40px;
-        font-size: 26px;
-        @include icon(ico-header-title, 26px, auto);
-        &:before {
-          content: '';
-          left: 0;
-          @include size(26px, 20px);
-        }
-      }
-      .breadcrumbs {
-        padding: unset;
-        max-width: unset;
-        >ol { 
-          @include flex(row, wrap, start, center);
-          gap: 8px;
-          margin-top: unset;
-          width: 100%;
-          text-align: center;
-          >li { 
-            position: relative;
-            line-height: 20px;
-            color: $fontColor50;
-            letter-spacing: 0.03em;
-            font-size: 15px;
-            &+li {
-              padding-left: 18px;
-              &:before { 
-                content: "\f054";
-                position: absolute;
-                display: block;
-                font-family: $iconFont;
-                font-weight: 900;
-                font-size: 12px;
-                top: 0;
-                left: 0;
-              }
-            }
-            .current {
-              font-weight: 500;
-              color: $pure;
-            }
+      .category-wrap {
+        @include flex(row, wrap, between, center);
+        padding: 20px;
+        border-radius: 10px;
+        background: $lineColor1;
+        .category-name {
+          display: block;
+          padding-left: 34px;
+          font-size: 20px;
+          @include icon(ico-header-title, 26px, auto);
+          &:before {
+            content: '';
+            left: 0;
+            width: 24px;
+            aspect-ratio: 1 / 0.769;
+            background-size: 100%, auto;
+            background-position: center;
           }
         }
-        i { 
-          font-size: 14px;
-          line-height: 20px;
-          &.home { color: $color-point; }
-          &.breadArrow { color: $lineColor3;}
+        .breadcrumbs {
+          padding: unset;
+          max-width: unset;
+          >ol { 
+            @include flex(row, wrap, start, center);
+            gap: 8px;
+            margin-top: unset;
+            width: 100%;
+            text-align: center;
+            >li { 
+              position: relative;
+              line-height: 20px;
+              color: $fontColor50;
+              letter-spacing: 0.03em;
+              font-size: 15px;
+              &+li {
+                padding-left: 18px;
+                &:before { 
+                  content: "\f054";
+                  position: absolute;
+                  display: block;
+                  font-family: $iconFont;
+                  font-weight: 900;
+                  font-size: 12px;
+                  top: 0;
+                  left: 0;
+                }
+              }
+              .current {
+                font-weight: 500;
+                color: $pure;
+              }
+            }
+          }
+          i { 
+            font-size: 14px;
+            line-height: 20px;
+            &.home { 
+              color: $pure;
+              >span { display: none; }
+            }
+            &.breadArrow { color: $lineColor3;}
+          }
+          .home {
+            span[itemprop="name"] { display: none; }
+          }
+          .sep { display: none; }
         }
-        .home {
-          span[itemprop="name"] { display: none; }
-        }
-        .sep { display: none; }
       }
       .page-title { 
         margin: 20px 0 14px;
@@ -516,6 +561,7 @@ article.page {
             @include size(46px);
             border-radius: 23px;
             @include transition(all, 0.2s, linear);
+            cursor: pointer;
             z-index: 10;
             &:before {
               @include aCenter;
@@ -613,14 +659,19 @@ article.page {
       }
     }
     footer.page-footer-meta {
-      margin-top: 40px;
-      padding-top: 40px;
+      margin-top: 6rem;
+      padding-top: 3rem;
       border-top: 2px solid $lineColor1;
+      >:not(:first-child) {
+        margin-top: 3rem;
+        padding-top: 3rem;
+        border-top: 2px solid #27292d;
+      }
       .page-taxonomy {
         >strong {
           display: block;
-          margin-bottom: 12px;
-          font-size: 18px;
+          margin-bottom: 2rem;
+          font-size: 20px;
         }
         .category-list {
           @include flex(row, wrap, start, center);
@@ -631,16 +682,37 @@ article.page {
               a { color: $pure; }
             }
             >a {
-              padding: 0 12px;
+              padding: 0 1.2rem 0 3rem;
+              position: relative;
               font-size: 14px;
               font-weight: 400;
-              line-height: 32px;
+              line-height: 36px;
               color: $fontColor50;
-              border-radius: 4px;
-              border: 2px solid $lineColor1;
+              border-radius: 6px;
+              border: 1px dashed $lineColor2;
               background: $color-bg;
+              &:before {
+                content: "\23";
+                position: absolute;
+                top: 50%;
+                left: 0.8rem;
+                width: 2rem;
+                height: 2rem;
+                font-family: "Font Awesome 7 Free";
+                font-size: 12px;
+                font-weight: 700;
+                @include flex(row, wrap, center, center);
+                @include translate(y, -50%);
+                @include transition(all, 0.2s, linear);
+              }
             }
           }
+        }
+      }
+      .page__comments {
+        width: 100%;
+        .page__comments-title {
+          display: none;
         }
       }
     }
@@ -651,8 +723,9 @@ aside.aside {
   overflow-y: auto;
   position: fixed;
   top: $header-height;
-  right: 0;
-  padding: 40px 30px 140px 30px;
+  right: calc((100% - 1920px) / 2);
+  @include right($full, 0);
+  padding: 40px 30px 40px 30px;
   width: $aside-width;
   max-height: calc(100vh - #{$header-height});
   min-height: calc(100vh - #{$header-height});
@@ -669,6 +742,12 @@ aside.aside {
     width: calc(100% - 60px);
     height: 140px;
     background: linear-gradient(to top, $color-bg, transparent);
+    pointer-events: none;
+    @include transition(all, 0.2s, ease);
+    opacity: 1;
+  }
+  &.is-end::after {
+    opacity: 0;
   }
 
   // 목차 커스텀
@@ -795,6 +874,8 @@ aside.aside {
       font-size: 20px;
     }
     .category-swiper {
+      padding: 10px;
+      margin: -10px;
       .swiper-wrapper {
         // @include flex(row, wrap, start, center);
         .swiper-slide {
@@ -803,6 +884,14 @@ aside.aside {
             padding: 20px 20px 12px;
             border-radius: 8px;
             background: $color-bg;
+            @include transition(all, 0.2s, linear);
+            &:hover {
+              box-shadow: 0 5px 10px 4px $color-bg;
+              transform: translateY(-5px);
+            }
+            &:active {
+              transform: translateY(5px);
+            }
             >img { 
               width: 30px;
             }
@@ -841,19 +930,41 @@ aside.aside {
     @include r(440px) {
       width: 100%;
     }
-
-    >a { @include flex(column, wrap, start, stretch); }
+    >a { 
+      @include flex(column, wrap, start, stretch);
+      @include transition(all, 0.2s, linear);
+      &:hover { 
+        .archive-item-teaser {
+          box-shadow: 0 5px 10px 4px $color-bg;
+          transform: translateY(-5px);
+        }
+        .archive-item-title { color: $pure !important; }
+      }
+      &:active {
+        .archive-item-teaser {
+          transform: translateY(5px);
+        }
+      }
+    }
     .archive-item-teaser {
       overflow: hidden;
       flex: 1;
       height: auto;
       border-radius: 8px;
+      aspect-ratio: 16 / 9;
+      @include transition(all, 0.2s, linear);
+      >img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
     strong {
       display: block;
       margin-top: 12px;
       font-size: clamp(1.4rem, 2vw, 1.6rem);
       color: $fontColor80;
+      @include transition(all, 0.2s, linear);
     }
     .page-meta {
       margin-top: 4px;
